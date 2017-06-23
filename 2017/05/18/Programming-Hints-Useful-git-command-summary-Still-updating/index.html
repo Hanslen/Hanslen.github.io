@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Jiahe Chen"/>
+        <meta property="og:title" content="[Programming Hints] Useful git command summary (Still updating)"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archiv - Jiahe Chen</title>
+    <title>[Programming Hints] Useful git command summary (Still updating) - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -146,101 +146,66 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Archiv</h1>
+                <div class="post-heading">
+                    <h1>[Programming Hints] Useful git command summary (Still updating)</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-05-18
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2017/06/20/Solve-the-problem-of-“pod-install”-–-forever-wait/">
-        <h1 class="post-title archive">
-            Solve the problem of “pod install” – forever wait
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-06-20
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="How-to-push-an-existing-folder-to-the-GitHub"><a href="#How-to-push-an-existing-folder-to-the-GitHub" class="headerlink" title="How to push an existing folder to the GitHub"></a>How to push an existing folder to the GitHub</h1><p>switch to your folder (E.g <code>cd ~/testFolder</code>)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git init </div><div class="line">git remote add origin git@github.com:xxxx/xxxx.git</div><div class="line">git add .</div><div class="line">git commit -m &quot;First commit&quot;</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
+<p>Note: You are erase the git files of the old repository completely by using<br><code>rm -rf .git</code> before <code>git init</code><br>And you may have a problem while you push it to the master, and if the error is like the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">To https://github.com/xxx/xxx.git</div><div class="line"> ! [rejected]        master -&gt; master (fetch first)</div><div class="line">error: failed to push some refs to &apos;https://github.com/xxx/xxx.git&apos;</div><div class="line">hint: Updates were rejected because the remote contains work that you do</div><div class="line">hint: not have locally. This is usually caused by another repository pushing</div><div class="line">hint: to the same ref. You may want to first integrate the remote changes</div><div class="line">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</div><div class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</div></pre></td></tr></table></figure></p>
+<p>You can fix this problem by pushing it to the git forcedly using command<br><code>git push -u origin master -f</code><br>If you are pushing a folder to the repository which contains some files already, you need to merge the local branch with the remote branch first. The command should be:<br><code>git pull --rebase origin master</code></p>
+<h1 id="How-to-clone-an-existing-repository-from-GitHub"><a href="#How-to-clone-an-existing-repository-from-GitHub" class="headerlink" title="How to clone an existing repository from GitHub"></a>How to clone an existing repository from GitHub</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir myFolder</div><div class="line">cd myFolder</div><div class="line">git clone git@github.com:xxxx/xxxx.git</div></pre></td></tr></table></figure>
+<p>You may need to list the remote branch, and you can do that by using:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch -a (shows all local and remote branches)</div><div class="line">git branch -r (shows only remote branches)</div></pre></td></tr></table></figure>
+<p>Then you can download the repository from GitHub using<br><code>git checkout branchName &amp;&amp; git pull</code><br>(Switch to the targeted branch and pull the code)</p>
+<p>This post is still updating through my programming experience. 🙂 Feel free to leave a comment and tell me which problem you are facing with Git. It will be good to configure that out together. 😀</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2017/05/18/Programming-Hints-Useful-git-command-summary-Still-updating/">
-        <h1 class="post-title archive">
-            [Programming Hints] Useful git command summary (Still updating)
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-05-18
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2017/03/21/Cryptography-stream-cipher-and-block-cipher/">
-        <h1 class="post-title archive">
-            Cryptography: stream cipher and block cipher
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-03-21
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2017/02/06/KMP-Algorithm-explanation-and-python-code/">
-        <h1 class="post-title archive">
-            KMP Algorithm explanation and python code
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-02-06
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2016/06/28/VPN-How-to-set-up-shadowsocks-account-in-AWS/">
-        <h1 class="post-title archive">
-            [VPN] How to set up shadowsocks account in AWS
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2016-06-28
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />

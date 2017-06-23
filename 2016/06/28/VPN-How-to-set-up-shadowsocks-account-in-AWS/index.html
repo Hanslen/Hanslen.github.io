@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Hello World"/>
+        <meta property="og:title" content="[VPN] How to set up shadowsocks account in AWS"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Hello World - Jiahe Chen</title>
+    <title>[VPN] How to set up shadowsocks account in AWS - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -154,13 +154,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>[VPN] How to set up shadowsocks account in AWS</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2017-06-23
+                            2016-06-28
                         
                     </span>
                 </div>
@@ -182,15 +182,21 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                <p>In this tutorial, I am going to illustrate how to set up your own Shadowsocks account. Before we start, you need a server, for me, I use the AWS. Then install Shadowsocks for that server.</p>
+<h1 id="Shadowsocks-configuration"><a href="#Shadowsocks-configuration" class="headerlink" title="Shadowsocks configuration:"></a>Shadowsocks configuration:</h1><ol>
+<li><code>sudo -s</code> //Get the root permission</li>
+<li><code>apt-get update</code> //update the apt-get</li>
+<li><code>apt-get install python-pip</code> //install python-pip</li>
+<li><code>pip install shadowsocks</code> //install shadowsocks</li>
+<li><code>vi /etc/shadowsocks.json</code> //create a file, and add the following code<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</div><div class="line">    &quot;server_port&quot;:port,</div><div class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;password&quot;:&quot;password&quot;,</div><div class="line">    &quot;timeout&quot;:300,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;fast_open&quot;:false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Don’t forget “”, that’s quite important.</p>
+<ol>
+<li><code>ssserver -c /etc/shadowsocks.json -d start</code> //start your shadowsocks</li>
+</ol>
+<h1 id="Server-configuration"><a href="#Server-configuration" class="headerlink" title="Server configuration:"></a>Server configuration:</h1><p>Then you need to go to your EC2 Management Console, go to <code>instances</code>, and find your <code>security groups</code>, then click your security groups, Click <code>Inbound</code>-&gt;<code>Edit</code>. Because my port is 8388, so my settings are like these:<br><img src="/2016/06/28/VPN-How-to-set-up-shadowsocks-account-in-AWS/vpn_aws_config.png" alt="vpn_aws_config"><br>The port for your should be your <code>/etc/shadowsocks.json.</code></p>
+<h1 id="Client-configuration"><a href="#Client-configuration" class="headerlink" title="Client configuration:"></a>Client configuration:</h1><p>Here is a link for the shadowsocks:<br>Mac: <a href="http://dl.tudouvpn.com/ShadowsocksX-2.4.1.dmg" target="_blank" rel="external">http://dl.tudouvpn.com/ShadowsocksX-2.4.1.dmg</a><br>Then you open the server settings, address should be your elastic IP, port should be the server_port, method is <code>&quot;aes-256-cfb&quot;</code>, password should be your own password. Well done. 🙂 We have finished.:-)</p>
 
 
                 

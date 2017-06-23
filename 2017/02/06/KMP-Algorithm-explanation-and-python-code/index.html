@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="KMP Algorithm explanation and python code"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>KMP Algorithm explanation and python code - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>KMP Algorithm explanation and python code</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-02-06
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Brute-force-solution-Disadvantage"><a href="#Brute-force-solution-Disadvantage" class="headerlink" title="Brute force solution (Disadvantage)"></a>Brute force solution (Disadvantage)</h1><p>In order to solve the problem of substring search, people will come up with the idea of brute force. Let’s look at an example, suppose we have a string, “ababcab”(Let’s call this string S). Then we want to check whether this string contains “abc”(Let’s call this string T). Based on the idea of brute force, we will start at the index 0(si) in S and index 0(ti) in T.<br><img src="/2017/02/06/KMP-Algorithm-explanation-and-python-code/kmp1.png" alt="kmp1"><br>When ti = 2 and si = 2, we find that ‘c’ != ‘a’. So we start at si =1, ti =0 again. Then ‘b’ != ‘a’, so we start at si = 2, ti = 0, etc… The complexity of this algorithm is m*n. (m is the length of S, n is the length of T). So when the length of array grows bigger, it will cost a lot of time. Here we introduce the KMP algorithm.</p>
+<h1 id="KMP-algorithm-part-1-Partial-matching-table"><a href="#KMP-algorithm-part-1-Partial-matching-table" class="headerlink" title="KMP algorithm (part 1_Partial matching table):"></a>KMP algorithm (part 1_Partial matching table):</h1><p>The algorithm was conceived in 1970 by Donald Knuth and Vaughan Pratt, and independently by James H. Morris. The three published it jointly in 1977.[1]  </p>
+<p>The basic idea is compared with brute force solution, which need to move the si one by one each time, and start with the ti = 0 each time, KMP algorithm can skip those index which has been searched. The complexity of it is m+n. To explain it better let’s see the previous example again.<br><img src="/2017/02/06/KMP-Algorithm-explanation-and-python-code/kmp2.png" alt="kmp2"><br>When si = 2 and ti = 2, we have already known that s0 = t0, s1 = t1, and t0 != t1. So s1 != t0. We can skip s1, start from s2 directly. So next time, we start from si = 2, ti = 0.</p>
+<p>The most important part is check S, so we introduce another concept—<font style="color:red">“partial match table”</font>, each element in this table stands for the maxim of the prefix has occurred before this index. Let’s see an example “abcabaca”.<br><img src="/2017/02/06/KMP-Algorithm-explanation-and-python-code/kmp3.png" alt="kmp3"><br>for index = 2, c: prefix is a, ab, suffix is c, bc. There is no matching. So as the index = 0, 1. So before index = 3, we can know:<br><img src="/2017/02/06/KMP-Algorithm-explanation-and-python-code/kmp4.png" alt="kmp4"><br>When index = 3, a : prefix is a,ab,abc, sufix is a,ca,bca. We find that ‘a’ equas ‘a’. And the length of ‘a’ is 1, so we update the partial matching table to<br><img src="/2017/02/06/KMP-Algorithm-explanation-and-python-code/kmp5.png" alt="kmp5"><br>When index = 4, b: prefix is a,ab,abc, abca, sufix is b,ab, cab, bcab. We find that ‘ab’ equals ‘ab’. And the length of ‘ab’ is 2, so we update the partial mathcing table to<br><img src="/2017/02/06/KMP-Algorithm-explanation-and-python-code/kmp6.png" alt="kmp6"><br>When index = 5, a: prefix is a, ab, abc, abca, abcab, sufix is a, ba, aba, caba, bcaba. We find that ‘a’ equals ‘a’, and the length of ‘a’ is 1, etc. Repeat these steps, we can have the final partial matching table which is<br><img src="/2017/02/06/KMP-Algorithm-explanation-and-python-code/kmp7.png" alt="kmp7"><br>In order to make this partial matching table, the python code is as follow:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">size = len(str)</div><div class="line">k = 0</div><div class="line">next = [0]*size</div><div class="line">for i in xrange(1, size):</div><div class="line">    k = next[i-1]</div><div class="line">    while str[k] != str[i] and k:</div><div class="line">        k = next[k-1]</div><div class="line">    if str[k] == str[i]:</div><div class="line">        next[i] = k+1</div></pre></td></tr></table></figure></p>
+<p>The next array will be the partial matching table. What I need to explain here is the while loop, when the character does not match. We need to go back to check, which one is the farthest index that equals to the current index and do not have any same prefix previously.</p>
+<h1 id="KMP-Algorithm-part-2-Main"><a href="#KMP-Algorithm-part-2-Main" class="headerlink" title="KMP Algorithm (part 2_Main):"></a>KMP Algorithm (part 2_Main):</h1><p>Here is the main part, after we got the partial matching table, everything becomes easier(note: it should be the continue code for the previous code):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sizep = len(pat)</div><div class="line">p,s = 0, 0</div><div class="line">while p &lt; sizep and s &lt; size and sizep &lt;= size:</div><div class="line">    if(str[s] == pat[p]):</div><div class="line">        p += 1</div><div class="line">        s += 1</div><div class="line">    else:</div><div class="line">        if p == 0:</div><div class="line">            s += 1</div><div class="line">        else:</div><div class="line">            p = next[p-1]</div><div class="line">if p == sizep:</div><div class="line">    return s-sizep</div><div class="line">else:</div><div class="line">    return -1</div></pre></td></tr></table></figure>
+<p>s always keeps increasing. We adjust p with partial matching table. When str[s] equals to pat[p]. We increase p and s one by one. But when it does not equal, if p equals to zero, that means the first element in pattern does not equal to  the current index of s. So add 1 to s. However,it p != 0, then move p to the next[p-1]. The previous one that occurs in the substring, match it.</p>
+<h1 id="Further"><a href="#Further" class="headerlink" title="Further:"></a>Further:</h1><p>The partial matching table can be used to solve this problem:</p>
+<font style="color:orange">Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.</font>
+
+<p>It can be solved by just using the partial matching table. Do this return:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p = next[-1]</div><div class="line">return p &gt; 0 and size%(size-p)==0</div></pre></td></tr></table></figure></p>
+<p>Hope this explanation help you guys have a better understanding of KMP algorithm. If you have any question, please leave a comment below. Thanks for reading it. 🙂</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

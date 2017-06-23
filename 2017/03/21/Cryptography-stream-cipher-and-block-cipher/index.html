@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Jiahe Chen"/>
+        <meta property="og:title" content="Cryptography: stream cipher and block cipher"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archiv - Jiahe Chen</title>
+    <title>Cryptography: stream cipher and block cipher - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -146,101 +146,72 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Archiv</h1>
+                <div class="post-heading">
+                    <h1>Cryptography: stream cipher and block cipher</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-03-21
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2017/06/20/Solve-the-problem-of-“pod-install”-–-forever-wait/">
-        <h1 class="post-title archive">
-            Solve the problem of “pod install” – forever wait
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-06-20
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Stream-Cipher"><a href="#Stream-Cipher" class="headerlink" title="Stream Cipher"></a>Stream Cipher</h1><p>A stream cipher is a symmetric key cipher where plaintext digits are combined with a pseudorandom cipher digit stream. In a stream cipher, each plaintext digit is encrypted one at a time with the corresponding digit of the key stream, to give a digit of the cipher text stream.</p>
+<h2 id="One-time-pad"><a href="#One-time-pad" class="headerlink" title="One time pad"></a>One time pad</h2><p>In Cryptography, one time pad is an encryption technique that cannot be cracked, but requires the use of one-time pre-shared key the same size as the message being sent. For OTP, encryption and decryption is defined as:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">E(k, m) = k XOR m               (Encryption)  </div><div class="line">D(k, c) = k XOR c               (Decryption)</div></pre></td></tr></table></figure></p>
+<p>The one time pad is the only example of perfect secrecy, in this technique, brute force is pointless.  Here is an example of how to solve a one time pad encryption:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Suppose you are told that the one time pad encryption of the me-</div><div class="line">ssage “attack at dawn” is 09e1c5f70a65ac519458e7e53f36 (the pla-</div><div class="line">intext letters are encoded as 8-bit ASCII and the givencipherte-</div><div class="line">xt is written in hex). What would be the one time pad encryptio-</div><div class="line">n of the message “attack at dusk” under the same OTP key?</div></pre></td></tr></table></figure>
+<p>At first, we know that the message “attack at dawn” convert to “09e1c5f70a65ac519458e7e53f36”, so we assign “attack at dawn” to m1, and “09e1c5f70a65ac519458e7e53f36” to c1.  Because c1 is the encrypted  result of m1, so<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c1 = m1 ⊕ k            =&gt;             k = c1⊕m1</div></pre></td></tr></table></figure></p>
+<p>In this problem, m2 = “attack at dawn”, and we know:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c2 = m2 ⊕ k =&gt; c2 = m2 ⊕ c1 ⊕ m1</div></pre></td></tr></table></figure></p>
+<p>So we can get the the OPT key of message “attack at dusk”.  To implement it with the python code is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">def strxor(s1,s2):</div><div class="line">    return &apos;&apos;.join(chr(ord(a) ^ ord(b)) for a,b in zip(s1,s2))</div><div class="line">strxor(strxor(&quot;6c73d5240a948c86981bc294814d&quot;.decode(&apos;hex&apos;), &quot;attack at dawn&quot;), &quot;attack at dusk&quot;).encode(&apos;hex&apos;)</div></pre></td></tr></table></figure></p>
+<p>However, it lacks in portability-the key is the same size as the message and convenience- you must never reuse the key. Modern stream ciphers attempt to approximate the one-time pad with a pseudorandom key stream, in OTP with a pseudorandom key, which is smaller than |M|.</p>
+<h1 id="Block-cipher"><a href="#Block-cipher" class="headerlink" title="Block cipher"></a>Block cipher</h1><p>Block ciphers use a key to encrypt a fixed-size block of plaintext into a fixed-size block of ciphertext. They are usually more computationally expensive than stream ciphers, but have numerous benefits.</p>
+<p>Claude Shannon suggested that all that was required for a strong cipher was repeated substation and permutation. SP-Networks combine a substitution process with a permutation into a single round.</p>
+<ol>
+<li>Substitution Boxes: Add confusion by replacing value with other values using a lookup table.<br><img src="/2017/03/21/Cryptography-stream-cipher-and-block-cipher/block1.png" alt="block1"></li>
+<li>Permutation Boxes: Add diffusion by moving values around from input to output.<br><img src="/2017/03/21/Cryptography-stream-cipher-and-block-cipher/block2.png" alt="block2"></li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2017/05/18/Programming-Hints-Useful-git-command-summary-Still-updating/">
-        <h1 class="post-title archive">
-            [Programming Hints] Useful git command summary (Still updating)
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-05-18
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2017/03/21/Cryptography-stream-cipher-and-block-cipher/">
-        <h1 class="post-title archive">
-            Cryptography: stream cipher and block cipher
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-03-21
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2017/02/06/KMP-Algorithm-explanation-and-python-code/">
-        <h1 class="post-title archive">
-            KMP Algorithm explanation and python code
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-02-06
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2016/06/28/VPN-How-to-set-up-shadowsocks-account-in-AWS/">
-        <h1 class="post-title archive">
-            [VPN] How to set up shadowsocks account in AWS
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2016-06-28
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />

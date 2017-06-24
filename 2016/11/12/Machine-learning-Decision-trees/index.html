@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Machine learning] Decision trees"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Machine learning] Decision trees - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('Flat-Palette-9-blogin-syes.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Machine learning] Decision trees</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-11-12
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Machine-learning/">#Machine learning</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>A decision tree is a graph that uses a branching method to illustrate every possible outcome of a decision. It applies a series of linear decisions. When we want to predict something, check each node, can select a branch to go, finally, we will reach a predicted label.</p>
+<h1 id="Tree-classification"><a href="#Tree-classification" class="headerlink" title="Tree classification:"></a>Tree classification:</h1><ul>
+<li>Start at a root node</li>
+<li>Evaluate property of that node</li>
+<li>Follow branch according to property evaluation to descendant node</li>
+<li>Descendent node can then be considered to be the root node of a subtree</li>
+<li>Repeat until a Leaf node is reached, and assign that predicted label<br>The following figure illustrates the components of tree:<br><img src="/2016/11/12/Machine-learning-Decision-trees/dec1.png" alt="dec1"></li>
+</ul>
+<h1 id="ID3-algorithm"><a href="#ID3-algorithm" class="headerlink" title="ID3 algorithm:"></a>ID3 algorithm:</h1><p>The definition of ID3 algorithm is it begins with the original set S as the root node. On each iteration of the algorithm, it iterates through every unused attribute of the set S and calculates the entropy H(S) (or information gain IG(S)) of that attribute. It then selects the attribute which has the smallest entropy (or largest information gain) value. The set S is then split by the selected attribute (e.g. age is less than 50, age is between 50 and 100, age is greater than 100) to produce subsets of the data. The algorithm continues to recurse on each subset, considering only attributes never selected before.</p>
+<p>Suppose the training set contains p positive and n negative examples. Then an estimate on the information contained in a correct answer is:<br><img src="/2016/11/12/Machine-learning-Decision-trees/dec2.png" alt="dec2"><br>And the remainder of that attribute is:<br><img src="/2016/11/12/Machine-learning-Decision-trees/dec3.png" alt="dec3"><br>So the gain of that attribute is:<br><img src="/2016/11/12/Machine-learning-Decision-trees/dec4.png" alt="dec4"><br>Finally, the attribute that is chosen is the one with the largest gain.<br>Then we can note it as the node value.</p>
+<h1 id="Decision-tree-learning"><a href="#Decision-tree-learning" class="headerlink" title="Decision tree learning:"></a>Decision tree learning:</h1><p>We use the emotion_data set in this example. And all the data are on the Github, check the link at the bottom of this article. Six trees will be made to predict six emotions. Firstly, we convert the target label data to a new set only includes 1 and 0. 1 stands for this data is emotion_N. 0 stands for it is not emotion_N. Then we need to select the best attribute and the most suitable threshold (bound) at each node. We select each data at the current attribute as the threshold, and then keep track of p0, n0, p1 and n1 for each loop, calculate the I (information), R (remainder) and G (gain) for each attribute, and finally find the greatest gain. So each attribute needs to calculate 612 times for selecting the best threshold for the attribute. Then selecting the attribute which has the greatest gain for the current node.</p>
+<p>We use <code>struct(‘op’, [], ‘kids’, [], ‘class’, [])</code> to make the decision tree and <code>tree.op = [suitable_attribute, threshold]</code> . If the training data value is less than the attribute’s threshold, we assign it to kids{1} , otherwise, kids{2} , and assign tree.kids = kids . Repeat it for every example. And then start making the next node, the steps are the same as previous. When the target data set contains only 1 or 0, we stop training this branch and set mode(target data) as the tree.class for that branch. Or if there is no attribute to select, we set mode(target data) as the tree.class for that branch. Repeat all until each branch has an end and repeat it for each emotion until six trees have been made. The following figure is what the tree should be:<br><img src="/2016/11/12/Machine-learning-Decision-trees/dec5.png" alt="dec5"></p>
+<p>Here is the sample code for decision tree training:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function [ tree ] = DecisionTreeLearning( examples, attributes, targets )</div><div class="line">%train a decision tree</div><div class="line">tree = struct(&apos;op&apos;,[],&apos;kids&apos;,[],&apos;class&apos;,[]);</div><div class="line">if range(targets) == 0</div><div class="line">    % All targets are the same</div><div class="line">    tree.kids = cell(0);</div><div class="line">    tree.class = targets(1);</div><div class="line">elseif isempty(attributes)</div><div class="line">    % There are no attributes to split the tree</div><div class="line">    tree.kids = cell(0);</div><div class="line">    tree.class = mode(targets);   %caculate majority-value</div><div class="line">    </div><div class="line">else</div><div class="line">    [bestAttribute, selectbound] = ChooseBestAttribute(examples, attributes, targets);</div><div class="line">    leftKidexample = examples(examples(:,bestAttribute)&lt;=selectbound,:);</div><div class="line">    leftKidtarget = targets(examples(:,bestAttribute)&lt;=selectbound,:); rightKidexample = examples(examples(:,bestAttribute)&gt;selectbound,:);</div><div class="line">    rightKidtarget = targets(examples(:,bestAttribute)&gt;selectbound,:);</div><div class="line">    if isempty(leftKidexample) || isempty(rightKidexample)</div><div class="line">        tree.kids = cell(0);</div><div class="line">        tree.class = mode(targets);    %caculate majorityValue</div><div class="line">        return</div><div class="line">    else</div><div class="line">        tree.op = [bestAttribute, selectbound];</div><div class="line">        tree.kids&#123;1&#125; = DecisionTreeLearning(leftKidexample, attributes(find(attributes ~= bestAttribute)), leftKidtarget);</div><div class="line">        tree.kids&#123;2&#125; = DecisionTreeLearning(rightKidexample, attributes(find(attributes ~= bestAttribute)), rightKidtarget);</div><div class="line">        tree.class = [];</div><div class="line">    end</div><div class="line">end</div></pre></td></tr></table></figure>
+<h1 id="Pruning"><a href="#Pruning" class="headerlink" title="Pruning:"></a>Pruning:</h1><p>First full train a tree, without stopping criterion, after training, prune tree by eliminating pairs of leaf nodes for which the impurity penalty is small. So tree pruning will remove branches that result in the same value no matter the value of the attribute split on, to some extents, these branches make no senses. And the optimal tree size is where the cost is the smallest possible but still having an error rate of the tree using cross validation. The most basic <font style="color:red">difference</font> is the pruned tree has a smaller size than the original tree. On the other hand, overfitting is less likely to occur in the pruned tree as we have reduced the variance of the tree, however, it can also result in a higher bias in predicting.</p>
+<h1 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross-validation:"></a>Cross-validation:</h1><p>Cross-validation is to split data into two sets, one for training data and another for testing data. These two should never overlap. As for 10 cross-validation, we firstly train the training data(9 size) and then use the trained tree to predict the testing data(1 size). We can calculate the error estimate. Repeat it 10 times, and then calculate the total error estimate.  It can avoid overfitting.</p>
+<p>Here is the link for downloading the sample data:</p>
+<p><a href="http://hanslen.me/materials/emotions_data_66.mat" target="_blank" rel="external">Download</a></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

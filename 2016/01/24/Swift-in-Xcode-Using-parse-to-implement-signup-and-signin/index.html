@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Swift in Xcode]Using parse to implement signup and signin"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Swift in Xcode]Using parse to implement signup and signin - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('parse-1024x320.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Swift in Xcode]Using parse to implement signup and signin</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-01-24
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/programming/">#programming</a> <a href="/tags/swift-in-Xcode-IOS/">#swift in Xcode(IOS)</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>For me, I love to use Parse as the database for App. It’s more flexible than MySQL I think, and it has already had many api for us to use. In this article, I am going to illustrate how to use parse to implement signup and signin. 🙂 I use swift and Xcode to starting programming for my project.Basically, I will talk about these three sections:</p>
+<ul>
+<li><a href="http://hanslen.me/blog/index.php/2016/01/24/using-parse-to-implement-signup-and-signinswift-in-xcode/#a" target="_blank" rel="external">Get to Parse</a></li>
+<li><a href="http://hanslen.me/blog/index.php/2016/01/24/using-parse-to-implement-signup-and-signinswift-in-xcode/#b" target="_blank" rel="external">Create SignUp Action</a></li>
+<li><a href="http://hanslen.me/blog/index.php/2016/01/24/using-parse-to-implement-signup-and-signinswift-in-xcode/#c" target="_blank" rel="external">Create SignIn Action</a></li>
+</ul>
+<h1 id="Get-to-Parse"><a href="#Get-to-Parse" class="headerlink" title="Get to Parse"></a>Get to Parse</h1><p>Here is the parse website–<a href="http://parse.com/" target="_blank" rel="external">Parse</a>, after you sign in, you can create a new App in the dashboard.<br><img src="/2016/01/24/Swift-in-Xcode-Using-parse-to-implement-signup-and-signin/p.png" alt="p"><br>Then hover your mouse to the app you have just created. Click Quickstart. Then click social-&gt;mobile-&gt;IOS-&gt;Swift, then if you have already got an existing project then choose the existing project, if not, choose new project. For the new project, you do not need to do any setup. So for here, I will illustrate how to setup with the existing project.</p>
+<ol>
+<li>Download &amp; unzip the SDK</li>
+<li>Add the SDKS to your app.<br>You can just drag the Parse.framework and Bolts.framework you downloaded into your Xcode project folder target. Make sure the “Copy items to destination’s group folder” checkbox is checked. However, for me, I always drag all the framework into that.<br>There is one tip: <strong>If you create a new group and put all that framework into the new group, remember to change your framework path. If you do not do that, you can not import parse!</strong></li>
+<li>Add the dependencies. Just click on targets -&gt; Your app name -&gt; and then the ‘Build phases’ tab. Expand ‘Link Binary with Libraries’ as shown. The libraries which need to be added have shown on the parse website.<br>Then connect your app to parse, do the same step like the website tutorial, I will not explain more about that. One thing still need to pay attention again is “import Parse”. If you come with an error called, <font style="color:red">no such module parse</font>, the reason will be the path for the framework!</li>
+</ol>
+<h1 id="Create-signUp-Action"><a href="#Create-signUp-Action" class="headerlink" title="Create signUp Action"></a>Create signUp Action</h1><p>Then basic idea for this part is insert our user information to the database. Generally, in our Main.storyboard, we create some labels and textfields then we control drag that to our cocoa touch class. Here is an example code for register button action:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line">@IBAction func register(sender: AnyObject) &#123;</div><div class="line"></div><div class="line">        if(passwordTF.text == passwordAgainTF.text)&#123;</div><div class="line"></div><div class="line">            if(usernameTF.text != &quot;&quot; &amp;&amp; passwordTF.text != &quot;&quot; &amp;&amp; passwordAgainTF.text != &quot;&quot; &amp;&amp; emailTF.text != &quot;&quot;)&#123;</div><div class="line"></div><div class="line">                let user = PFUser()</div><div class="line"></div><div class="line">                user.username = usernameTF.text</div><div class="line"></div><div class="line">                user.password = passwordTF.text</div><div class="line"></div><div class="line">                user.email = emailTF.text</div><div class="line"></div><div class="line">                </div><div class="line"></div><div class="line">                user.signUpInBackgroundWithBlock &#123; (success: Bool, error: NSError?) -&gt; Void in</div><div class="line"></div><div class="line">                    if (error == nil) &#123;</div><div class="line"></div><div class="line">                        // Hooray! Let them use the app now.</div><div class="line"></div><div class="line">                        let success = UIAlertController(title: &quot;Error&quot;, message: &quot;You have registered successfully!&quot;, preferredStyle: .Alert)</div><div class="line"></div><div class="line">                        let cancel = UIAlertAction(title: &quot;Cancel&quot;, style: .Cancel, handler: nil)</div><div class="line"></div><div class="line">                        let ok = UIAlertAction(title: &quot;OK&quot;, style: .Default, handler: nil)</div><div class="line"></div><div class="line">                        success.addAction(cancel)</div><div class="line"></div><div class="line">                        success.addAction(ok)</div><div class="line"></div><div class="line">                        self.presentViewController(success, animated: true, completion: nil)</div><div class="line"></div><div class="line">                    &#125; else &#123;</div><div class="line"></div><div class="line">                        // Examine the error object and inform the user.</div><div class="line"></div><div class="line">                        let emailError = UIAlertController(title: &quot;Error&quot;, message: &quot;Your email address is wrong&quot;, preferredStyle: .Alert)</div><div class="line"></div><div class="line">                        let cancel = UIAlertAction(title: &quot;Cancel&quot;, style: .Cancel, handler: nil)</div><div class="line"></div><div class="line">                        let ok = UIAlertAction(title: &quot;OK&quot;, style: .Default, handler: nil)</div><div class="line"></div><div class="line">                        emailError.addAction(cancel)</div><div class="line"></div><div class="line">                        emailError.addAction(ok)</div><div class="line"></div><div class="line">                        self.presentViewController(emailError, animated: true, completion: nil)</div><div class="line"></div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            else&#123;</div><div class="line"></div><div class="line">                let emptyError = UIAlertController(title: &quot;Error&quot;, message: &quot;You must fill all the blankets&quot;, preferredStyle: .Alert)</div><div class="line"></div><div class="line">                let cancel = UIAlertAction(title: &quot;Cancel&quot;, style: .Cancel, handler: nil)</div><div class="line"></div><div class="line">                let ok = UIAlertAction(title: &quot;OK&quot;, style: .Default, handler: nil)</div><div class="line"></div><div class="line">                emptyError.addAction(cancel)</div><div class="line"></div><div class="line">                emptyError.addAction(ok)</div><div class="line"></div><div class="line">                self.presentViewController(emptyError, animated: true, completion: nil)</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        else&#123;</div><div class="line"></div><div class="line">            let passwordError = UIAlertController(title: &quot;Error&quot;, message: &quot;The password you type is not the same&quot;, preferredStyle: .Alert)</div><div class="line"></div><div class="line">            let cancel = UIAlertAction(title: &quot;Cancel&quot;, style: .Cancel, handler: nil)</div><div class="line"></div><div class="line">            let ok = UIAlertAction(title: &quot;OK&quot;, style: .Default, handler: nil)</div><div class="line"></div><div class="line">            passwordError.addAction(cancel)</div><div class="line"></div><div class="line">            passwordError.addAction(ok)</div><div class="line"></div><div class="line">            self.presentViewController(passwordError, animated: true, completion: nil)</div><div class="line"></div><div class="line">                </div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>Inside this code, I have also created some validation for password and non-empty blankets. Remember, in parse, the password will be hidden to protect the user information. And the email has already have the validate check. So we do not need to write again.</p>
+<h1 id="Create-SignIn-Action"><a href="#Create-SignIn-Action" class="headerlink" title="Create SignIn Action"></a>Create SignIn Action</h1><p>Here is the code for login, the advantage for parse is that it has already got a logInWithUsernameInBackground. So that’s why I love it 🙂<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">@IBAction func logInPress(sender: UIButton) &#123;</div><div class="line"></div><div class="line">        if(userNameTF.text != &quot;&quot; &amp;&amp; passwordTF.text != &quot;&quot;)&#123;</div><div class="line"></div><div class="line">            let user = PFUser()</div><div class="line"></div><div class="line">            user.password = passwordTF.text</div><div class="line"></div><div class="line">            user.username = userNameTF.text</div><div class="line"></div><div class="line">            PFUser.logInWithUsernameInBackground(userNameTF.text!, password: passwordTF.text!, block: &#123;</div><div class="line"></div><div class="line">                (User: PFUser?, Error : NSError?)-&gt;Void in</div><div class="line"></div><div class="line">                if Error == nil&#123;</div><div class="line"></div><div class="line">                    dispatch_async(dispatch_get_main_queue())&#123;</div><div class="line"></div><div class="line">                        print(&quot;success log in&quot;)</div><div class="line"></div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;)</div><div class="line"></div><div class="line">            </div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        else&#123;</div><div class="line"></div><div class="line">            let emptyError = UIAlertController(title: &quot;Error&quot;, message: &quot;You must fill all the blanckets!&quot;, preferredStyle: .Alert)</div><div class="line"></div><div class="line">            let cancel = UIAlertAction(title: &quot;Cancel&quot;, style: .Cancel, handler: nil)</div><div class="line"></div><div class="line">            let ok = UIAlertAction(title: &quot;OK&quot;, style: .Default, handler: nil)</div><div class="line"></div><div class="line">            emptyError.addAction(cancel)</div><div class="line"></div><div class="line">            emptyError.addAction(ok)</div><div class="line"></div><div class="line">            self.presentViewController(emptyError, animated: true, completion: nil)</div><div class="line"></div><div class="line">            </div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>Thanks for reading it. XD I learned this tips from my Group project, however, I cannot shared the source code of all my project now. 🙁 Maybe after the demo day of my project, I will publish that to gitHub. 🙂 If you have any questions, feel free to contact with me.XD</p>
+<h2 id="Important-Note"><a href="#Important-Note" class="headerlink" title="Important Note:"></a>Important Note:</h2><font style="color:red">Sad news: the hosted version of Parse will be fully retired on January 28th, 2017. So I have posted another post about using MYSQL for swift. Please check that.</font>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

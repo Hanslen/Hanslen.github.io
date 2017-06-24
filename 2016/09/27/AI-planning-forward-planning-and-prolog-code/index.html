@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[AI planning] forward planning and prolog code"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[AI planning] forward planning and prolog code - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('layer_background3-1024x320.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[AI planning] forward planning and prolog code</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-09-27
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Artificial-intelligence/">#Artificial intelligence</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Some basic ideas to understand:</p>
+<ul>
+<li>Goal: planning a sequence of actions to achieve a given state.</li>
+<li>State: A complete description of the world for the purpose of problem-solving</li>
+<li>Operator: transforms one(complete) state of the world into another(complete) state<br>A search problem is defined by a state space(i.e., an initial state or set of initial states and a set of operators) and a set of goal states.</li>
+</ul>
+<p>Basically, forward planning is familiar(forward) search.</p>
+<p>We start in the initial state, check which actions are applicable and what states they result in, check if resulting states are goals, repeat…</p>
+<p>Check applicability of actions<br>Compute the result of action<br>For computing the result of actions, it is useful to split postcondition into add list of positive fluents and delete list of fluents occuring with negation. The state resulting from executing an action act in state s is computed as follows:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result(s, act) = (s U add-list(act)) \ delete-list(act)</div></pre></td></tr></table></figure></p>
+<p>AI planning systems solve a particular kind of reasoning problem by:</p>
+<ul>
+<li>changing the state representation from explicit to attribute-based allowing partial representations of states in operators</li>
+<li>changing the operator representation and inference procedure to avoid the need for explicit frame axioms.</li>
+<li>changing the space in which the search is carried out(from world space to plan space)<br>To implement this planning in <strong>prolog</strong>, we have three predicates:</li>
+</ul>
+<ol>
+<li>Block(x)            x is a block</li>
+<li>On(x, y)             block x is on y (where y is a block or the table)</li>
+<li>Clear(x)            there is no block on top of x</li>
+</ol>
+<font style="color:red">Note: Block is for distinguishing between things that can be stacked(blocks) and things that can’t (the table)</font>
+
+<h1 id="Representing-operators-in-Prolog"><a href="#Representing-operators-in-Prolog" class="headerlink" title="Representing operators in Prolog"></a>Representing operators in Prolog</h1><p>In STRIPS planning, states are conjunctions of fluents.</p>
+<p>States(e.g., initial state, goal state) can then be represented by lists of terms, e.g. [clear(a), on(a,b), …] representing a conjunction of fluents.</p>
+<p>STRIPS operators have three components: name, precondition and postcondition(effects).</p>
+<p>Here we representing operators using a predicate, pop/4</p>
+<ul>
+<li>first argument is the name of the operator(a term)</li>
+<li>second argument is the precondition(a list of terms)</li>
+<li>third argument is the add list(a list of terms)</li>
+<li>fourth argument is the delete list(a list of terms)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">:- use_module(library(lists)).</div><div class="line"></div><div class="line">% fp(+State,+Goals,-Plan): Plan is a sequence of operators that</div><div class="line">% applied in State achieves Goals</div><div class="line">fp(S,G,P) :-</div><div class="line">    list_to_set(S,SS),</div><div class="line">    list_to_set(G,GS),</div><div class="line">    fp(SS,GS,[],R),</div><div class="line">    reverse(R,P).</div><div class="line"></div><div class="line">fp(S,G,P,P) :- holds(G,S).</div><div class="line">fp(S,G,Os,P) :-</div><div class="line">    pop(O,Pre,A,D),</div><div class="line">    holds(Pre,S),</div><div class="line">    \+ member(O,Os),</div><div class="line">    apply(S,A,D,S1),</div><div class="line">    fp(S1,G,[O|Os],P).</div><div class="line"></div><div class="line"></div><div class="line">% holds(+Goals,+State): the goals (or preconditions) Goals hold in State</div><div class="line">holds([],_).</div><div class="line">holds([Pre|Ps],S) :- select(Pre,S,S1), holds(Ps,S1).</div><div class="line"></div><div class="line">% apply(+State,+AddList,+DeleteList,-NewState): NewState is the result of updating State with AddList and DeleteList</div><div class="line">apply(S,A,D,S1) :-</div><div class="line">    subtract(S,D,S2),</div><div class="line">    union(A,S2,S1).</div><div class="line"></div><div class="line">pop(move(X,Y),</div><div class="line">    [block(X),block(Y),on(X,Z),clear(X),clear(Y)],</div><div class="line">    [on(X,Y),clear(Z)],</div><div class="line">    [on(X,Z),clear(Y)]).</div><div class="line"></div><div class="line">pop(move_to_table(X),</div><div class="line">    [block(X),block(Y),on(X,Y),clear(X)],</div><div class="line">    [on(X,table),clear(Y)],</div><div class="line">    [on(X,Y)]).</div><div class="line"></div><div class="line">% Testing</div><div class="line">initial_state([block(a),block(b),block(c),</div><div class="line">	       on(b,table),on(c,a),on(a,table),clear(b),clear(c)]).</div><div class="line">goal_state([on(a,b),on(b,c),on(c,table)]).</div></pre></td></tr></table></figure>
+<h1 id="For-clear-description"><a href="#For-clear-description" class="headerlink" title="For clear description:"></a>For clear description:</h1><p>list_to_set:<br><code>True when Set has the same elements as List in the same order. The left-most copy of duplicate elements is retained. List may contain variables. Elements E1 and E2 are considered duplicates iff E1 == E2 holds. The complexity of the implementation is N*log(N).</code>-From the SWI-Prolog documentation<br>That is list_to_set([1,1,2,3],X) — X = [1,2,3], list_to_set([1,2,3,3],X) — X = [1,2,3] .</p>
+<p>For<br><code>fp(S, G, Os, P)</code>, firstly, we will find a possible move, that operation should be O -&gt; <code>(pop(O, Pre, A, D))</code>. Secondly, we need to check is the precondition included the Pre we want, if it is, that means this operation can be executed. <code>\+member(O, Os)</code> checks has this operation been executed or not. If it has not been executed, then it can be executed. Then we call the <code>apply(S,A,D,S1)</code> to get the new list of preconditions, and add the operation to <code>[O|Os]</code>, and call <code>fp(S1,G,[O|Os],P)</code> again until, <code>fp(S, G, P, P) :- holds(G, S)</code>. That means, G is included in the S. Then we can return the P(the solution path).</p>
+<p>What we need to pay more attention is the P here is inverse, because, each time, we need our operation in front of the operation lists. So when we finally return our operations, we need to reverse P.</p>
+<h1 id="Another-way-which-contains-a-cycle-detection"><a href="#Another-way-which-contains-a-cycle-detection" class="headerlink" title="Another way which contains a cycle detection"></a>Another way which contains a cycle detection</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">:- use_module(library(lists)).</div><div class="line">:- use_module(library(ordsets)).</div><div class="line"></div><div class="line">% fp(+State,+Goals,-Plan): Plan is a sequence of operators that</div><div class="line">% applied in State achieves Goals</div><div class="line">fp(S,G,P) :-</div><div class="line">    list_to_ord_set(S,OS),</div><div class="line">    list_to_set(G,GS),</div><div class="line">    fp(OS,GS,[OS],P).</div><div class="line"></div><div class="line">fp(S,G,_,[]) :- holds(G,S).</div><div class="line">fp(S,G,C,[O|P]) :-</div><div class="line">    pop(O,Pre,A,D),</div><div class="line">    holds(Pre,S),</div><div class="line">    apply(S,A,D,S1),</div><div class="line">    \+ member(S1,C),</div><div class="line">    fp(S1,G,[S1|C],P).</div><div class="line"></div><div class="line">% holds(+Goals,+State): the goals (or preconditions) Goals hold in State</div><div class="line">holds([],_).</div><div class="line">holds([Pre|Ps],S) :- select(Pre,S,S1), holds(Ps,S1).</div><div class="line"></div><div class="line">% apply(+State,+AddList,+DeleteList,-NewState): NewState is the result</div><div class="line">% of updating State with AddList and DeleteList. Note that all</div><div class="line">% parameters must be ordered.</div><div class="line">apply(S,A,D,S1) :-</div><div class="line">    ord_subtract(S,D,S2),</div><div class="line">    ord_union(A,S2,S1).</div><div class="line"></div><div class="line">% Note: requires conditions to be ordered.</div><div class="line">pop(move(X,Y),</div><div class="line">    [block(X),block(Y),clear(X),clear(Y),on(X,Z)],</div><div class="line">    [clear(Z),on(X,Y)],</div><div class="line">    [clear(Y),on(X,Z)]).</div><div class="line"></div><div class="line">pop(move_to_table(X),</div><div class="line">    [block(X),block(Y),clear(X),on(X,Y)],</div><div class="line">    [clear(Y),on(X,table)],</div><div class="line">    [on(X,Y)]).</div></pre></td></tr></table></figure>
+<p>To describe it clearly:<br><code>fp(OS, GS, [OS],P)</code> the third argument will hold all the states that the planning has been gone through, so here we need to use <code>list_to_ord_set</code> rather than <code>list_to_set</code> When in the <code>fp(S,G,C,[O|P])</code> each time, we need to check is the state has been reached or not. This improvement will work with cycle detection.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

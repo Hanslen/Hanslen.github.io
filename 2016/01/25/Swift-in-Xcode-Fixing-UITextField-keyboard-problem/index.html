@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Swift in Xcode]Fixing UITextField keyboard problem"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Swift in Xcode]Fixing UITextField keyboard problem - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('Flat-UI-Wallpaper-HD-A61-1024x640.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Swift in Xcode]Fixing UITextField keyboard problem</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-01-25
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/programming/">#programming</a> <a href="/tags/swift-in-Xcode-IOS/">#swift in Xcode(IOS)</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>When coding in swift, for the UITextField, it is easy to find some problem comes with the annoying presenting way for keyboard. This is article, I will focus on two main problems.</p>
+<ul>
+<li><strong>How to hide a keyboard, when I do not need that</strong></li>
+<li><strong>How to let the keyboard do not cover my useful information(textfield, button, etc..)</strong></li>
+</ul>
+<p>Give some explanation for the first problem, let’s take a signin page as an example, after we typed our username and password, we need to click the submit button. However, in most case, the keyboard covers the button, and we need to click “return”(iphone users usually use that button on the keyboard) to hide the keyboard.<br>Give some explanation for the second problem, if on a page, we have so many textFields to fill in, then we will come with another problem that, when we click the textField, the keyboard will cover the textField, and often, we can not see what we typed. So to solve this problem, we need to move all the view up.</p>
+<h1 id="How-to-hide-a-keyboard-when-I-do-not-need-that"><a href="#How-to-hide-a-keyboard-when-I-do-not-need-that" class="headerlink" title="How to hide a keyboard, when I do not need that"></a>How to hide a keyboard, when I do not need that</h1><p>The most easiest way to do this is add a <code>resignFirstResponder()</code> to the textField. The following steps are:</p>
+<ol>
+<li><p>Control drag the UITextField to the destination view controller</p>
+</li>
+<li><p>The connection should be “Action”</p>
+</li>
+<li><p>Change the “Event” to “Did End On Exit”</p>
+</li>
+<li><p>Put these code inside the function <code>usernameTF.resignFirstResponder()</code></p>
+</li>
+</ol>
+<p>Here is an example.:-)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@IBAction func endEmail(sender: UITextField) &#123;</div><div class="line">        emailTF.resignFirstResponder()</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>Then, you finished all the steps 🙂</p>
+<h1 id="How-to-let-the-keyboard-do-not-cover-my-useful-information-textfield-button-etc"><a href="#How-to-let-the-keyboard-do-not-cover-my-useful-information-textfield-button-etc" class="headerlink" title="How to let the keyboard do not cover my useful information(textfield, button, etc..)"></a>How to let the keyboard do not cover my useful information(textfield, button, etc..)</h1><p>The solution should be add a scrollView, and each time, we move the scrollView up, and that will not covered the useful information.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func textFieldDidBeginEditing(textField: UITextField) &#123;</div><div class="line">        print(&quot;wow&quot;)</div><div class="line">        scrollView.setContentOffset(CGPointMake(0, 200), animated: true)</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>The above code shows that when the textFieldDidBeginEditing , we started move the scrollView, 200 should be changed to fit your own condition. And here is one more useful tips: <font style="color:red">you may not need to move the scrollView,</font> every times, when you click the textField, so let’s pay attention to the argument, textField, you can write a if-statement to judge is the textField what you want or not. And then do the move action. 🙂</p>
+<p>If you have any questions, please comment below, thank you for reading. 🙂</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

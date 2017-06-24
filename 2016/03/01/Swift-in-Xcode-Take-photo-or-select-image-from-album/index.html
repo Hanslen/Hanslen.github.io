@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Swift in Xcode]Take photo or select image from album"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Swift in Xcode]Take photo or select image from album - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('Flat-UI-Wallpaper-HD-A61-1024x640.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Swift in Xcode]Take photo or select image from album</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-03-01
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/programming/">#programming</a> <a href="/tags/swift-in-Xcode-IOS/">#swift in Xcode(IOS)</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>March is coming =w=..This month, still updating some tips and tutorials for swift.  In this article, I am going to talk about how to use camera in swift. Basically, I will divide that into two categories:</p>
+<ul>
+<li>Take a photo</li>
+<li>Select a image from album</li>
+<li>Get the image we want</li>
+</ul>
+<p>In order to us the imagePicker, first, we need to let our viewController inherited with the UIImagePickerControllerDelegate and UINavigationControllerDelegate, do not forget the <font style="color:red">UINavigationControllerDelegate</font>. </p>
+<h1 id="Take-a-photo"><a href="#Take-a-photo" class="headerlink" title="Take a photo"></a>Take a photo</h1><p>The following code is for open the camera:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera))&#123;</div><div class="line">            let cameraViewController = UIImagePickerController()</div><div class="line">            cameraViewController.sourceType = UIImagePickerControllerSourceType.Camera</div><div class="line">            cameraViewController.delegate = self</div><div class="line">            self.presentViewController(cameraViewController, animated: true, completion: nil)</div><div class="line">            print(&quot;Tapped wow&quot;)</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">            print(&quot;Disable tapped&quot;)</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>However, when we take our image how to store that image. It will be discussed after I display the code for get a image from album.</p>
+<h1 id="Select-a-image-from-album"><a href="#Select-a-image-from-album" class="headerlink" title="Select a image from album"></a>Select a image from album</h1><p>The following code is for open the album:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let picker : UIImagePickerController = UIImagePickerController()</div><div class="line">        picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary</div><div class="line">        picker.delegate = self</div><div class="line">        picker.allowsEditing = false</div><div class="line">        self.presentViewController(picker, animated: true, completion: nil)</div></pre></td></tr></table></figure></p>
+<p>Now, we have got the image, and we may need to upload this image(will be discussed in the following posts, please check my blog often) to our server or display that image.</p>
+<h1 id="Get-the-image-we-want"><a href="#Get-the-image-we-want" class="headerlink" title="Get the image we want"></a>Get the image we want</h1><p>The following code is for didFinishPickingImage, the argument image is the image we get, in this example, I replace the userIcon(UIImageViewController)’s image with the image I just get and store our image into the coreData. The image for the coreData is a NSData so do not forget to write UIImageJPEGRepresentation, I find that the picture iPhone take is jpeg.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) &#123;</div><div class="line">        self.userIcon.image = UIImage(named: &quot;parentIcon&quot;)</div><div class="line">        //        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext</div><div class="line">        </div><div class="line">        let person = self.loguser![0] as NSManagedObject</div><div class="line">        person.setValue(UIImageJPEGRepresentation(image, 1), forKey: &quot;userImage&quot;)</div><div class="line">        do&#123;</div><div class="line">            self.userIcon.image = image</div><div class="line">            print(&quot;Successfully updated photo&quot;)</div><div class="line">            try person.managedObjectContext?.save()</div><div class="line">            print(&quot;Insert into coreData&quot;)</div><div class="line">            self.myImageUploadRequest()</div><div class="line">        &#125;catch _&#123;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        picker.dismissViewControllerAnimated(true, completion: nil)</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>Also, here is one more tip, that how to convert a imageURL to the UIImage, the code is following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func getProfPic(imgURLString: String) -&gt; UIImage? &#123;</div><div class="line">        let imgURL = NSURL(string: imgURLString)</div><div class="line">        let imageData = NSData(contentsOfURL: imgURL!)</div><div class="line">        if(imageData != nil)&#123;</div><div class="line">            let image = UIImage(data: imageData!)</div><div class="line">            return image</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>For the next following post, I will update some article about how to upload Image to the server. Please check.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

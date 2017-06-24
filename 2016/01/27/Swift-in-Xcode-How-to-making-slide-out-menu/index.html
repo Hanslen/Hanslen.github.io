@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Swift in Xcode]How to making slide out menu"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Swift in Xcode]How to making slide out menu - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('motion-graphics-background.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Swift in Xcode]How to making slide out menu</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-01-27
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/programming/">#programming</a> <a href="/tags/swift-in-Xcode-IOS/">#swift in Xcode(IOS)</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Slide out menu is very important element in IOS developing. There are many open source codes on websites. In this article, I am going to illustrate how to use SWRevealViewController to make slide out menu. There are four steps:</p>
+<ul>
+<li>Download the package from gitHub</li>
+<li>Import the file and do some settings</li>
+<li>Making connections between viewController</li>
+<li>Active the menu button<br>Also, there is a brilliant video in youTube, and I learned from that, if you are interested in, you can check this link <a href="https://www.youtube.com/watch?v=8EFfPT3UeWs" target="_blank" rel="external">YouTube link</a></li>
+</ul>
+<h1 id="Download-the-package-from-gitHub"><a href="#Download-the-package-from-gitHub" class="headerlink" title="Download the package from gitHub"></a>Download the package from gitHub</h1><p>First, you need to download the packages from the <a href="https://github.com/John-Lluch/SWRevealViewController" target="_blank" rel="external">gitHub</a>, here is the link. gitHub link Actually, we do not need all the files, however, download everything should be useful. The two files what we need are inside <code>SWRevealViewController/SWRevealViewController</code> , called <code>SWRevealViewController.h</code> and <code>SWRevealViewController.m</code> Then, you can new your new Xcode project.</p>
+<h1 id="Import-the-file-and-do-some-settings"><a href="#Import-the-file-and-do-some-settings" class="headerlink" title="Import the file and do some settings"></a>Import the file and do some settings</h1><p>Drag that two files into the xCode project. It should come out with a alert message that asks <font style="color:red">“Would you like to configure an Objective-C bridging header“</font>, just click yes.  Then we will have a new file called yourProjectName-bridging header.h, add the following line into that file <code>#import &quot;SWRevealViewController.h&quot;</code></p>
+<h1 id="Making-connections-between-viewController"><a href="#Making-connections-between-viewController" class="headerlink" title="Making connections between viewController"></a>Making connections between viewController</h1><p>Drag a new view Controller in our main storyboard, and set it as the “SWRealViewController”, drag another tableView Controller, a navigation Controller, and a viewController(initial one), create navigation Connection between navigation controller and initial viewController. Control drag the SWRealViewController to the tableViewController, and set the Manual Segue to be reveal view controller set controller, also click that segue and update the storyBoard segue identifier to sw_rear(means left side bar). Also, the manual segue between realViewController and navigation Controller is reveal view controller set controller as well. 🙂 Cools, we have done most things. In the initial controller, we just need to create a navigation bar and add a bar item. Then, we need to active that button XDDD</p>
+<h1 id="Active-the-menu-button"><a href="#Active-the-menu-button" class="headerlink" title="Active the menu button"></a>Active the menu button</h1><p>Control drag that item bar and create a connection in the ViewController file, let we suppose that the name of that bar item is “open”. Add the following code to inside the <code>override func viewDidLoad()</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">open.target = self.revealViewController()</div><div class="line">open.action = Selector(&quot;revealToggle:&quot;)</div></pre></td></tr></table></figure></p>
+<p>There is one more thing you need to pay attention is do not forget to <font style="color:red">set the initial view Controller</font>!!</p>
+<p>Cons! Now, build your app, I think it should works.  If you still want to learn how to create a right side bar, the basic idea is to change the sw_rear to sw_right. And I strongly recommend that you should check that video, because it contains more useful application for swrevealviewcontroller, hopes you all enjoys this article. 🙂</p>
+<p>There is the link for this project in youTube, many thanks to Jared Davidson, I really love the videos he put on youTube. <a href="http://archetapp.com/2015/04/09/making-a-slide-out-menu-swift-in-xcode-swrevealviewcontroller/" target="_blank" rel="external">project download</a> </p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

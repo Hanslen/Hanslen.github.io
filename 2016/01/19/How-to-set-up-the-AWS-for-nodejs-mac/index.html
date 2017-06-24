@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="How to set up the AWS for nodejs? (mac)"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>How to set up the AWS for nodejs? (mac) - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('asw-1024x320.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>How to set up the AWS for nodejs? (mac)</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-01-19
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/programming/">#programming</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>As the AWS is more and more popular in recent days, and the large increment of nodejs server on web.  For this article, I am going to talk about how  to set up the nodejs server for mac, to some extends, for the linux.</p>
+<h2 id="Use-root-to-log-in"><a href="#Use-root-to-log-in" class="headerlink" title="Use root to log in"></a>Use root to log in</h2><p>Firstly, when we initialize our aws server, we will get our pem, and each time when we log into our server account, it is quite inconvenient, and a better way to solve this problem is try to use root log in.<br><code>sudo passwd root</code><br>And then we need to change the authority of the following path.<br><code>sudo chmod 777 /etc/ssh/sshd_config</code><br>Do not forget to change it back after we finished part one.<br><code>vi /etc/ssh/sshd_config</code><br><code>PermitRootLogin //change this to the following line</code><br><code>PermitRootLogin yes //delete the comment</code><br><code>PasswordAuthentication no //change no to yes</code><br><code>UsePAM yes //change yes to no</code></p>
+<p>Modify the authority of the previous file.<br><code>sudo chmod 644 /etc/ssh/sshd_config</code><br>Then restart the aws server, this time, you can use root to login. XD</p>
+<h2 id="Install-mysql"><a href="#Install-mysql" class="headerlink" title="Install mysql"></a>Install mysql</h2><p>Follow these commands:</p>
+<ol>
+<li>yum install -y mysql-server mysql mysql-deve</li>
+<li>service mysqld start start mysql</li>
+<li>chkconfig mysqld on to ensure that every time when we start our server mysql is started</li>
+</ol>
+<h2 id="Install-nodejs"><a href="#Install-nodejs" class="headerlink" title="Install nodejs"></a>Install nodejs</h2><p>Follow these commands:</p>
+<ol>
+<li><code>yum -y install gcc make gcc-c++ openssl-devel wget</code></li>
+<li><code>wget http://nodejs.org/dist/v0.10.26/node-v0.10.26.tar.gz</code></li>
+<li><code>tar -zvxf node-v0.10.26.tar.gz</code></li>
+<li><code>cd node-v0.10.26</code></li>
+<li><code>make &amp;&amp; make install</code></li>
+<li><code>node -v</code> to check has nodejs been installed successfully.<br>Ps. It has been suggested that install from git may be better 0.0<br>Here is the url: <a href="https://github.com/nodejs/node" target="_blank" rel="external">nodejs on git</a></li>
+</ol>
+<h2 id="Install-npm"><a href="#Install-npm" class="headerlink" title="Install npm"></a>Install npm</h2><p>Follow these commands:</p>
+<ol>
+<li><code>ln -s /usr/local/bin/node /usr/bin/node</code></li>
+<li><code>wget https://npmjs.org/install.sh</code></li>
+<li><code>sh install.sh</code></li>
+<li><code>npm -v</code> to check has npm been installed successfully.</li>
+</ol>
+<h2 id="Install-screen"><a href="#Install-screen" class="headerlink" title="Install screen"></a>Install screen</h2><p>When we run <code>node app</code>, then we can not do anything. I will advice you to install screen, which can provide us to open another screen to control our server.</p>
+<ol>
+<li><code>yum install screen -y</code></li>
+<li><code>screen -S newscreen</code> Open a new screen, if you want to exit this screen, for mac user, user control+a, and then press d.</li>
+<li><code>screen -r newscreen</code> to show that screen</li>
+<li><code>screen -ls</code> list all the screen names out.</li>
+</ol>
+<h2 id="Optional-part-install-git"><a href="#Optional-part-install-git" class="headerlink" title="Optional part: install git"></a>Optional part: install git</h2><p>Follow these commands:</p>
+<ol>
+<li><code>yum install git -y</code></li>
+<li><code>mkdir openmind</code> make the project folder for your project</li>
+<li><code>cd openmind</code></li>
+<li><code>git init</code></li>
+<li><code>git remote add gitproject &quot;url&quot;</code> The url should be git url</li>
+<li><code>cd .git/</code></li>
+<li><code>vi config</code></li>
+<li>change the url in config to the url of our git project</li>
+<li><code>cd ../</code></li>
+<li><code>git pull gitproject master</code></li>
+</ol>
+<h2 id="Additional-Note"><a href="#Additional-Note" class="headerlink" title="Additional Note:"></a>Additional Note:</h2><p>For reinstall node and npm for mac:<br><code>sudo curl -L npmjs.org/install.sh | sudo sh</code></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

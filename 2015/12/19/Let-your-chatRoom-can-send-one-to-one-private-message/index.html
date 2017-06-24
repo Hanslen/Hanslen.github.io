@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Let your chatRoom can send one to one private message"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Let your chatRoom can send one to one private message - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('oneToOne-1024x320.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Let your chatRoom can send one to one private message</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2015-12-19
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/programming/">#programming</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Before reading this article, you need to know how to create your simple chatRoom which I have shown in the previous article.<br>I am going to do these, step by step:</p>
+<ul>
+<li>Store each client</li>
+<li>Send message to the aim client</li>
+<li>Show that private message</li>
+<li>Keep showing the new message</li>
+</ul>
+<h1 id="Store-each-client"><a href="#Store-each-client" class="headerlink" title="Store each client"></a>Store each client</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">var io = require(&apos;socket.io&apos;)(server);</div><div class="line"></div><div class="line">var sockets = &#123;&#125;;</div><div class="line">var user = new Array();</div><div class="line">user.push(&quot;everyone&quot;);</div><div class="line"></div><div class="line">io.on(&apos;connection&apos;, function(client)&#123;</div><div class="line">	client.emit(&quot;usersfirst&quot;, user);</div><div class="line">	client.on(&apos;disconnect&apos;, function()&#123;</div><div class="line">		console.log(client.nickname+&quot; disconnected:-(&quot;);</div><div class="line">		for(var i = 0; i &lt; user.length; i++)&#123;</div><div class="line">			if(user[i] == client.nickname)&#123;</div><div class="line">				user.splice(i, 1);</div><div class="line">				break;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		client.broadcast.emit(&quot;users&quot;, user);</div><div class="line">		client.broadcast.emit(&quot;chat message&quot;, client.nickname+&quot; has left our chatRoom..:-(&quot;);</div><div class="line">	&#125;);</div><div class="line">	client.on(&apos;join&apos;, function(name)&#123;</div><div class="line">		client.nickname=name;</div><div class="line">		console.log(client.nickname+&quot; has connected!&quot;);</div><div class="line">		//add</div><div class="line">		sockets[name] = client;</div><div class="line">		user.push(name);</div><div class="line">		client.broadcast.emit(&quot;users&quot;, user);</div><div class="line">		client.emit(&quot;users&quot;, user);</div><div class="line">		client.broadcast.emit(&quot;chat message&quot;, client.nickname + &quot; has joined our chatRoom..:-)&quot;);</div><div class="line">		client.emit(&quot;chat message&quot;, client.nickname+&quot; has joined our chatRoom..:-)&quot;);</div><div class="line">		//add ends</div><div class="line"></div><div class="line">	&#125;);</div><div class="line">	client.on(&apos;chat message&apos;, function(msg, to)&#123;</div><div class="line">		var nickname = client.nickname;</div><div class="line">		// client.broadcast.emit(&quot;chat message&quot;,nickname+&quot;: &quot;+msg);</div><div class="line">		if(to == &quot;everyone&quot;)&#123;</div><div class="line">			console.log(nickname+&quot;: &quot;+msg+&quot; (This is a public message)&quot;);</div><div class="line">			client.broadcast.emit(&quot;chat message&quot;, nickname+&quot;: &quot;+msg+&quot; (This is a public message)&quot;);</div><div class="line">			client.emit(&quot;chat message&quot;, nickname+&quot;: &quot;+ msg+&quot; (You send a message to everyone)&quot;);</div><div class="line">		&#125;else&#123;</div><div class="line">			console.log(nickname+&quot;: &quot;+ msg+&quot; (&quot;+nickname+&quot; send a private message to &quot;+to+&quot;)&quot;)</div><div class="line">			sockets[to].emit(&quot;chat message&quot;, nickname+&quot;: &quot;+msg+&quot;(This is a private message)&quot;);</div><div class="line">			client.emit(&quot;chat message&quot;, nickname+&quot;: &quot;+ msg+&quot; (You send a private message to &quot;+to+&quot;)&quot;);</div><div class="line">		&#125;</div><div class="line">		client.broadcast.emit(&quot;users&quot;, user);</div><div class="line">		client.emit(&quot;users&quot;, user);</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<p>What we should do is to store every client in a array, in this example, I call that array sockets. Also, we need to check if the nickname has been used or not. So create another array called user in this example, this array is going to store all the nicknames. So each time,when we create another nickname, we can check is that name been used or not. What you need to know is <code>socket.io</code> is to send to server, and server emits to each client.</p>
+<h1 id="Send-message-to-the-aim-client"><a href="#Send-message-to-the-aim-client" class="headerlink" title="Send message to the aim client"></a>Send message to the aim client</h1><p>See in the previous code, in the <code>client.on(&#39;chat message&#39;, function(msg, to){});</code> If the String “to” is not equaled to the “everyone”, then you can use <code>sockets[to].emit()</code> to send message, this method is to send request to that exact client. Then only that man can receive that message XD. Looks cool 🙂</p>
+<h1 id="Show-that-private-message"><a href="#Show-that-private-message" class="headerlink" title="Show that private message"></a>Show that private message</h1><p>There is no difference in the <code>chat.html</code>. Because, that request was sent to that client, other client will not receive that request, so the old <code>chat.html</code> can show the information. 🙂</p>
+<h1 id="Keep-showing-the-new-message"><a href="#Keep-showing-the-new-message" class="headerlink" title="Keep showing the new message"></a>Keep showing the new message</h1><p>Another important thing you need to pay attention is, if we have a lot of messages, each time, to view the latest message, we need to scroll down artificially…That pretty bad experience. So, what we need to do is to write some javascript code to do that automatically 🙂 sounds good.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">socket.on(&apos;chat message&apos;, function(msg)&#123;</div><div class="line">    		$(&apos;#messages&apos;).append($(&apos;&lt;li&gt;&apos;).text(msg));</div><div class="line">    		getBottom();</div><div class="line">  		  &#125;);</div><div class="line">  		  function getBottom()&#123;</div><div class="line">  		  	$(&quot;html, body&quot;).animate(&#123;</div><div class="line">  		  			scrollTop: $(&quot;#container&quot;).height()</div><div class="line">  		 		 &#125;, 1);</div><div class="line">  		  &#125;;</div></pre></td></tr></table></figure></p>
+<p>Each time, when a new message was posted, it will run function getBottom(), and you can see the latest message 🙂</p>
+<h1 id="More-tips"><a href="#More-tips" class="headerlink" title="More tips:"></a>More tips:</h1><p>I have write another code for the server, like to see all the messages on the console, and improve the alert message for creating a new nickname. Please check that on my github. Still the same project as the previous one, but on the oneToOne branch 🙂<br>You can also click this link: <a href="https://github.com/Hanslen/socketChatRoom/tree/oneToOne" target="_blank" rel="external">oneToOneChatRoom</a></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Machine learning]Dimensionality Reduction"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Machine learning]Dimensionality Reduction - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('cropped-slide-1-1-1024x320.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Machine learning]Dimensionality Reduction</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-06-27
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Machine-learning/">#Machine learning</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Firstly, we need to think about why we need to reduce the dimensionality of a feature set. You will find that when we get a large size of data, the speed of calculation is extremely slow. Between these features, we can find some set are unrelated and some are highly related. Some people may ask is there a solution to quick the speed but don’t sacrifice the accuracy?  So I concluded <strong>three reasons to do dimensionality reduction</strong>:</p>
+<ol>
+<li>Remove features that have no correlation with the target distribution</li>
+<li>Remove/combine features that have redundant correlation with target distribution</li>
+<li>Extract new features with a more direct correlation<br>with target distribution</li>
+</ol>
+<p><img src="/2016/06/27/Machine-learning-Dimensionality-Reduction/di1.png" alt="d1"><br><img src="/2016/06/27/Machine-learning-Dimensionality-Reduction/di2.png" alt="d2"></p>
+<p>In this article, I am going to talk about method, <strong>Correlation Based Feature Selection</strong> and <strong>Principal Component Analysis</strong>. Some Matlab code will be used to illustrate it.</p>
+<h1 id="Correlation-Based-Feature"><a href="#Correlation-Based-Feature" class="headerlink" title="Correlation Based Feature"></a>Correlation Based Feature</h1><p>Correlation based feature selection (CFS) selects features in a forward-selection manner. And it is a iterative procedure, below are the steps it should take:</p>
+<ol>
+<li>Start with an empty set of selected features S_k, and a full set of initial features F, initialise k=1</li>
+<li>For each feature f in F, calculate the Pearson’s product-moment correlation r_cf between f and the target value t</li>
+<li>For each feature f in F, calculate the sum of correlations between f and all the features already in S_k</li>
+<li>Select the feature that maximises CF<br>S for this iteration, add it to S_k and remove it from F. Set k = k+1</li>
+<li>Repeat steps 2-4 until the CFS value starts to drop (convergence)<br>And the main function of CFS is<br><img src="/2016/06/27/Machine-learning-Dimensionality-Reduction/di3.png" alt="d3"><br>To illustrate this formula and the procedure b</li>
+</ol>
+<p>etter way, we need to know how to calculate the correlations. Here we calculate the <a href="https://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient" target="_blank" rel="external">Pearson’s (product-moment) correlation</a>. This value is between -1 and 1 with 1being fully correlated, -1 being negatively correlated, and 0 no correlation. The formula should be:<br><img src="/2016/06/27/Machine-learning-Dimensionality-Reduction/di4.png" alt="d4"><br>And the Matlab code for calculating it should be:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function [ co ] = pearson_product_moment_correlation( feature, target )</div><div class="line">    avg_x = sum(feature)/size(feature, 1);</div><div class="line">    avg_y = sum(target)/size(target, 1);</div><div class="line">    co_a = 0;</div><div class="line">    for i=1:size(feature, 1)</div><div class="line">        co_a = co_a+(feature(i,1)-avg_x)*(target(i,1)-avg_y);</div><div class="line">    end</div><div class="line">    co_b = 0;</div><div class="line">    for i=1:size(feature, 1)</div><div class="line">        co_b = co_b+(feature(i,1)-avg_x)*(feature(i,1)-avg_x);</div><div class="line">    end</div><div class="line">    co_b = sqrt(co_b);</div><div class="line"></div><div class="line">    co_c = 0;</div><div class="line">    for i=1:size(target, 1)</div><div class="line">        co_c = co_c+(target(i,1)-avg_y)*(target(i,1)-avg_y);</div><div class="line">    end</div><div class="line">    co_c = sqrt(co_c);</div><div class="line"></div><div class="line">    co = co_a/(co_b*co_c);</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>Then each time when adding a new feature to S_k do this calculation and select the maximum CFS for each iteration. When the CFS value decreases, stop the iteration.</p>
+<h1 id="Principal-Component-Analysis"><a href="#Principal-Component-Analysis" class="headerlink" title="Principal Component Analysis"></a>Principal Component Analysis</h1><p>Luckily, Matlab has a PCA function for us to do the calculation. However, we need to truly understand what PCA is. PCA requires calculation of:</p>
+<ol>
+<li>mean of observed variables</li>
+<li>covariance of observed variables</li>
+<li>eigenvalue/eigenvector computation of covariance matrix</li>
+</ol>
+<p>In Wikipedia, PCA is defined as <strong>Principal component analysis (PCA)</strong> is a statistical procedure that uses an <a href="https://en.wikipedia.org/wiki/Orthogonal_transformation" target="_blank" rel="external">orthogonal transformation</a> to convert a set of observations of possibly correlated variables into a set of values of <a href="https://en.wikipedia.org/wiki/Correlation_and_dependence" target="_blank" rel="external">linearly uncorrelated</a> variables called <strong>principal components</strong>. If let me explain it, I will say that it emphasizes variation between features and bring out strong patterns in a dataset. Now, you have the brief introduction of what PCA is. then take a look at <a href="http://uk.mathworks.com/help/stats/pca.html" target="_blank" rel="external">PCA function</a> in Matlab. To be specific, pca returns as <font style="color:red">first variable [coeff]</font> the principal components (PCs), ordered by descending eigenvalues (i.e. accounting for increasingly less variance in the data). The <font style="color:red">second variable [score]</font> returns the actual eigenvalues, while the <font style="color:red">third variable [latent]</font> returns the relative variance accounted for by each PC.</p>
+<p><img src="/2016/06/27/Machine-learning-Dimensionality-Reduction/di5.png" alt="d5"></p>
+<p>There is a Matlab example code for PCA:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">data = load(&apos;your_data.mat&apos;);</div><div class="line">[coeff, score, latent] = pca(data.x);</div><div class="line">x = score(:, 1);</div><div class="line">y = score(:, 2);</div><div class="line">scatter(x, y, 25, data.y, &apos;filled&apos;);</div></pre></td></tr></table></figure></p>
+<p>In this demo, I just select two features to draw a 2D scatter figure. You can select more, and it depends on your circumstance. Hope you all have understand that. 🙂 If you have any questions, please comment below. 🙂 Willing to discuss with you. 🙂</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

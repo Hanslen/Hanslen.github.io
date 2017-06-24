@@ -91,7 +91,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Configurable Title</a>
+            <a class="navbar-brand" href="/">Hanslen</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -107,14 +107,6 @@
                     </li>
                 
                     <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
                         <a href="/tags">
                             
                                 Tags
@@ -123,15 +115,15 @@
                     </li>
                 
                     <li>
-                        <a href="/categories">
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
                             
-                                Categories
+                                About me
                             
                         </a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                        <a href="https://github.com/Hanslen">
                             
                                 <i class="fa fa-github fa-stack-2x"></i>
                             
@@ -149,7 +141,7 @@
     <!-- Page Header -->
 <!-- Set your background image for this header in your post front-matter: cover -->
 
-<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+<header class="intro-header" style="background-image: url('mysql-1024x320.png')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -176,13 +168,38 @@
 
             <!-- Tags and categories -->
            
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/IOS-development/">#IOS development</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
 
             <!-- Gallery -->
             
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                
+                <p>When we use pod install to initialize our cocoaPods IOS project. You may stuck at the following (which you have to use control+C to stop the process):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">HanslendeMacBook-Pro:~ Hanslen$ pod install</div><div class="line">Updating local specs repositories</div><div class="line">^C[!] Cancelled</div></pre></td></tr></table></figure></p>
+<p>If you google this forever wait problem, some answers will let you try this command instead:<br><code>pod install --verbose --no-repo-update</code><br>However, this will not throughly solve the problem, you may face the new forever wait at: (same for using control+C to stop the process)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">HanslendeMacBook-Pro:~ Hanslen$ pod install --verbose --no-repo-update</div><div class="line"> Preparing</div><div class="line"></div><div class="line">Creating shallow clone of spec repo `master-1` from `https://github.com/CocoaPods/Specs.git`</div><div class="line"> $ /usr/bin/git clone https://github.com/CocoaPods/Specs.git master-1 --depth=1</div><div class="line"> Cloning into &apos;master-1&apos;...</div><div class="line">^C[!] Cancelled</div></pre></td></tr></table></figure></p>
+<p>By trying a lot of answers on the Stackoverflow, the following in one works for me:</p>
+<ol>
+<li><code>pod repo remove master</code></li>
+<li><code>pod setup</code></li>
+</ol>
+<p>Here, you may have a message indicating that your cocoaPods version is too old. (By using <code>pod --version</code> you can check your version)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HanslendeMacBook-Pro:~ Hanslen$ pod setup</div><div class="line">Setting up CocoaPods master repo</div><div class="line">[!] The `master` repo requires CocoaPods 1.0.0 - (currently using 0.39.0)</div><div class="line">Update CocoaPods, or checkout the appropriate tag in the repo.</div><div class="line">HanslendeMacBook-Pro:~ Hanslen$ pod --version</div><div class="line">0.39.0</div></pre></td></tr></table></figure></p>
+<p>To update the cocoaPods, you need <code>sudo gem install cocoapods</code>. Also, you may face another problem like:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HanslendeMacBook-Pro:~ Hanslen$ sudo gem install cocoapods</div><div class="line">......... (omitting some message)</div><div class="line">ERROR: While executing gem ... (Errno::EPERM)</div><div class="line"> Operation not permitted - /usr/bin/xcodeproj</div></pre></td></tr></table></figure></p>
+<p>If this error occurs, try this one <code>sudo gem install -n /usr/local/bin cocoapods</code>.<br>Then, type <code>pod --version</code> again, you will have the latest version. Then try <code>pod setup</code> again, you may meet a new problem (…SE is full of meeting new problem and fixing it…)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HanslendeMacBook-Pro:~ Hanslen$ pod setup</div><div class="line">Setting up CocoaPods master repo</div><div class="line">Performing a deep fetch of the `master` specs repo to improve future performance</div><div class="line">^C[!] Cancelled</div></pre></td></tr></table></figure></p>
+<p>Type this command: <code>sudo rm -fr ~/.cocoapods/repos/master</code><br>And then <code>pod setup</code>. It should work, you are downloading the relevant files from git…<br>Finally, try <code>pod install</code><br>Your origin problem “forever wait” should be fixed.</p>
+
 
                 
             </div>
@@ -230,8 +247,10 @@
                     
                 </ul>
                 <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
                 <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
                 <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
             </div>
         </div>
     </div>

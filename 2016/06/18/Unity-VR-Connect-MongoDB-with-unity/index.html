@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Unity VR] Connect MongoDB with unity"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Unity VR] Connect MongoDB with unity - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('Flat-UI-Wallpaper-HD-A61-1024x640.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Unity VR] Connect MongoDB with unity</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-06-18
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Unity-VR/">#Unity VR</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>This article is going to illustrate how to connect MongoDB with unity. Besides, I will write another article about how to connect MYSQL with unity as well.</p>
+<p>I have put all the material and source code on Github, here is the link: (<a href="https://github.com/Hanslen/unityWithMongodb/tree/master" target="_blank" rel="external">https://github.com/Hanslen/unityWithMongodb/tree/master</a>)</p>
+<h1 id="Import-packages"><a href="#Import-packages" class="headerlink" title="Import packages:"></a>Import packages:</h1><p>First you need to import the unity+mongodb.unitypackage, which is in the Github link. You can download, it contains “MongoDB.Bson.dll” and “MongoDB.Driver.dll”.</p>
+<h1 id="Writing-script-to-connect-with-MongoDB"><a href="#Writing-script-to-connect-with-MongoDB" class="headerlink" title="Writing script to connect with MongoDB:"></a>Writing script to connect with MongoDB:</h1><p>Firstly, I create an empty object and link it with a script. In that script, you need to include these<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">using UnityEngine;</div><div class="line">using System; </div><div class="line">using System.Collections;</div><div class="line">using System.Collections.Generic;</div><div class="line"></div><div class="line">using MongoDB.Bson;</div><div class="line">using MongoDB.Driver;</div><div class="line">using MongoDB.Driver.Builders;  </div><div class="line">using MongoDB.Driver.GridFS;  </div><div class="line">using MongoDB.Driver.Linq;</div></pre></td></tr></table></figure></p>
+<p>These you ensure you can use that packages, then, modify the main class. For this example, I write like these:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class HelloMongo : MonoBehaviour &#123;</div><div class="line">	string connectionString = &quot;mongodb://localhost:27017&quot;;</div><div class="line">	void Start () &#123;</div><div class="line">	/*</div><div class="line">	 * Establish connection</div><div class="line">	 */</div><div class="line">	    var client = new MongoClient(connectionString);</div><div class="line">	    var server = client.GetServer(); </div><div class="line">	    var database = server.GetDatabase(&quot;unity&quot;);</div><div class="line">	    var shopCollection= database.GetCollection(&quot;vrshop&quot;);</div><div class="line">	    Debug.Log (&quot;ESTABLISHED CONNECTION&quot;);</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The connectionString stands for the mongodb host, you can check your host by looking at your ./mongod(for mac) or mongod.exe(for windows):<br><img src="/2016/06/18/Unity-VR-Connect-MongoDB-with-unity/mo.png" alt="mo"></p>
+<h1 id="Query-collections"><a href="#Query-collections" class="headerlink" title="Query collections:"></a>Query collections:</h1><p>To get all the collections, you can use:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foreach (var document in shopCollections.FindAll()) &#123;</div><div class="line">	Debug.Log (&quot;My vrshop \n&quot; + document);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>If you just want to find one accurate row, use:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foreach (var document in shopcollections.Find(new QueryDocument(&quot;name&quot;, &quot;nike&quot;)))&#123;</div><div class="line">	Debug.Log (&quot;Get one info: \n&quot; + document);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>If you want to select the first row, use:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Debug.Log(&quot;First row: \n&quot; + shopCollections.FindOne ().ToString());</div></pre></td></tr></table></figure></p>
+<p>If you want to select the column where name = “nike”, use:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foreach (var document in shopCollections .Find(new QueryDocument(&quot;name&quot;, &quot;nike&quot;)))&#123;</div><div class="line">	Debug.Log (&quot;Select one column where name=nike: \n&quot; + document[&quot;scores&quot;]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="Insert-into-Collections"><a href="#Insert-into-Collections" class="headerlink" title="Insert into Collections:"></a>Insert into Collections:</h1><p>The following code is a sample with inserting several lines of data, if you want to insert one line, it’s the same, code:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">BsonDocument [] batch=&#123;</div><div class="line">	new BsonDocument&#123;</div><div class="line">	    &#123;&quot;name&quot;, &quot;nike&quot;&#125;,</div><div class="line">	    &#123;&quot;price&quot;, &quot;100&quot;&#125;</div><div class="line">	&#125;, </div><div class="line">	new BsonDocument&#123;</div><div class="line">	    &#123;&quot;name&quot;, &quot;adidas&quot;&#125;,</div><div class="line">	    &#123;&quot;price&quot;, &quot;200&quot;&#125;</div><div class="line">        &#125;,</div><div class="line">	new BsonDocument&#123;</div><div class="line">	    &#123;&quot;name&quot;, &quot;Lining&quot;&#125;,</div><div class="line">	    &#123;&quot;price&quot;, &quot;300&quot;&#125;</div><div class="line">	&#125; </div><div class="line">&#125;;</div><div class="line">shopcollections.InsertBatch (batch);</div></pre></td></tr></table></figure></p>
+<p>There are some more advanced querying data code, which will be in the file <code>advanced.cs</code>. You can check that out. Enjoy your unity journey with MongoDB. Thanks for reading. 🙂</p>
+<p>Many thanks for <a href="https://github.com/fabifiess/unity-mongodb" target="_blank" rel="external">fabifiess</a> who shared his code on GitHub.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

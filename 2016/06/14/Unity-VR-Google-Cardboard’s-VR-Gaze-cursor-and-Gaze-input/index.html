@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Unity VR]Google Cardboard’s VR Gaze cursor and Gaze input"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Unity VR]Google Cardboard’s VR Gaze cursor and Gaze input - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('Flat-Palette-9-blogin-syes.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Unity VR]Google Cardboard’s VR Gaze cursor and Gaze input</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-06-14
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Unity-VR/">#Unity VR</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>When we are playing some VR games, we often find a point in the middle of our view. If we move our head, that point will still stay in the middle, however, it can direct to different object. As VR developers we almost all need a UI system where the user can look at something and action it, such as a button. In this article, I am going to illustrate how to make this cursor and how to perform actions with this cursor.</p>
+<h1 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h1><p>Firstly, you need to download the SDK from Google VR website. The url is (<a href="https://developers.google.com/vr/unity/download" target="_blank" rel="external">https://developers.google.com/vr/unity/download</a>).  After you have downloaded the SDK, new a unity 3D project. And then click, <font style="color:red">Assets-&gt;Import Package-&gt;Custom Package</font>, and then click the “GoogleVRForUnity.unitypackage”. You need to import all the packages.</p>
+<h1 id="Make-a-cursor"><a href="#Make-a-cursor" class="headerlink" title="Make a cursor"></a>Make a cursor</h1><p>Firstly, delete the “Main Camera”. And then, drag the GvrMain(in the later 0.8 version, it is called GvrMain, before this version, it is called CardboardMain). GvrMain is in the directory of Assets-&gt;GoogleVR-&gt;Legacy-&gt;Prefabs:<br><img src="/2016/06/14/Unity-VR-Google-Cardboard’s-VR-Gaze-cursor-and-Gaze-input/gaze1.png" alt="gaze1"></p>
+<font style="color:red">You should be careful here, because there are two directories called Prefabs.</font>
+
+<p>You can set your position, as for me, I set x = 0, y = 1.5, z = 0. When you run the project, you may not see the sky. That’s because the camera’s clear flag is <font style="color:red">Solid color</font>. In order to change that, Click GvrMain-&gt;Head-&gt;Main Camera, on the right side, you can see below the camera category, there is a property called “Clear Flags”. Change the value to “SkyBox”.</p>
+<p>Then right click the left box to new a 3D Object called Plane. Then go to assets-&gt;googleVR-&gt;prefabs-&gt;UI, drag the GvrReticle to the leftBox. If you run the project, you will find that when you move your head the cursor doesn’t move. In order to let it move with your head, drag GvrReticle into the GvrMain-&gt;Head category. 🙂 We have a cursor successfully.</p>
+<h1 id="Gaze-input"><a href="#Gaze-input" class="headerlink" title="Gaze input"></a>Gaze input</h1><p>Now, we want to do some interactions with this cursor. Firstly, right click the left box to new a UI-&gt;EventSystem. Also, we need to new a 3D object-&gt;Cube as well.</p>
+<p>For the EventSystem, click “Add component” and search for “gaze input module”. You will have the section as below:</p>
+<p><img src="/2016/06/14/Unity-VR-Google-Cardboard’s-VR-Gaze-cursor-and-Gaze-input/gaze2.png" alt="gaze2"></p>
+<p>You will also need to move this section up, just below the<br><code>Event System(script)</code><br>Then for the GvrMain-&gt;Head-&gt;Main camera, click “Add component” and search for “Physics Raycaster”. You will have the section as below:</p>
+<p><img src="/2016/06/14/Unity-VR-Google-Cardboard’s-VR-Gaze-cursor-and-Gaze-input/gaze3.png" alt="gaze3"></p>
+<p>The we need to create a script for the cube. Click add component for the cube, and create a script called “Moveup”(As any as you like).</p>
+<p>Add these code, below the <code>void Update(){}</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public void MoveBoxUp()&#123;</div><div class="line">	transform.position += new Vector3(0f, 1f, 0f);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Then save it. You also need to add the component “Event trigger(script)” for the object Cube. Add new type “Pointer Down”, and then click “+”. You can drag the title of that component to show that you want the cube object, then select the function MoveUp-&gt;MoveBoxUp.</p>
+<p>You are almost down, the last important thing is to change the settings for GvrReticle. The settings are below:</p>
+<p><img src="/2016/06/14/Unity-VR-Google-Cardboard’s-VR-Gaze-cursor-and-Gaze-input/gaze4.png" alt="gaze4"><br>change the settings for Mesh Renderer.</p>
+<p>Tips: If you want to change to color of the cursor, you can go<br>GvrReticleMaterial-&gt;Shader-&gt;Color for changing the color.</p>
+<p>When you run this project, for mac user, hold on “option” and drag the scene, it will simulate that you are moving your head. When you let the cursor on the cube. It will be a circle. If you click, it can moveUp.  </p>
+<p><img src="/2016/06/14/Unity-VR-Google-Cardboard’s-VR-Gaze-cursor-and-Gaze-input/gaze5.png" alt="gaze5"></p>
+<p>For Google Cardboard, if you want to perform the click action. You can drag the magnetic ring on the left side of your cardboard. Enjoy your VR tour. 🙂</p>
+<p>Here is the code for this project: (<a href="https://github.com/Hanslen/Google_VR_cursor_gaze_input" target="_blank" rel="external">https://github.com/Hanslen/Google_VR_cursor_gaze_input</a>)</p>
+<p>🙂</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

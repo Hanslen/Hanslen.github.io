@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[Swift inXcode]Connect my swift app to mySQL"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[Swift inXcode]Connect my swift app to mySQL - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('mysql-1024x320.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[Swift inXcode]Connect my swift app to mySQL</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-01-23
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/About-me/">#About me</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>In the previous post, I have written an article about Parse signUp and signIn. However, Parse will stop service in Jan 27th,  2017. Instead of using parse, I will introduce how to use mysql to create signUp and signIn, to some extent, how to connect the swift app to mySQL.</p>
+<p>There are some basic knowledge for the connection, make sure you have worked with php before 🙂 The basic four steps are below:</p>
+<ol>
+<li>You have a server which has already installed apache, php and mysql(LAMP is also allowed)</li>
+<li>We write some php code to execute the mysql query</li>
+<li>Using our app to request that url and to run step 2</li>
+<li>Receive the data back from that URL</li>
+</ol>
+<h1 id="You-have-a-server-which-has-already-installed-apache-php-and-mysql"><a href="#You-have-a-server-which-has-already-installed-apache-php-and-mysql" class="headerlink" title="You have a server which has already installed apache, php and mysql"></a>You have a server which has already installed apache, php and mysql</h1><p>I usually use amazon AWS as my server, to install apache, php, mysql, you can find some tutorial on the internet. If you have any question feel free to comment below, I will write one as well. <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html" target="_blank" rel="external">Official aws document</a> Try this link, if you are not sure now.</p>
+<h1 id="We-write-some-php-code-to-execute-the-mysql-query"><a href="#We-write-some-php-code-to-execute-the-mysql-query" class="headerlink" title="We write some php code to execute the mysql query"></a>We write some php code to execute the mysql query</h1><p>The basic idea is to execute these mysql query. For here, I will use two basic files, one called Conn.php, it will include some mysql connection settings:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">class Conn &#123;</div><div class="line">    public static $dbhost = &quot;localhost&quot;;</div><div class="line">    public static $dbuser = &quot;root&quot;;</div><div class="line">    public static $dbpass = &quot;yourpassword&quot;;</div><div class="line">    public static $dbname = &quot;mydb&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>Filling that string with your own settings. Then let’s have a quick look for another file, MySQLDao.php: I may include some simple function for signUp and signin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">class MySQLDao &#123;</div><div class="line">    var $dbhost = null;</div><div class="line">    var $dbuser = null;</div><div class="line">    var $dbpass = null;</div><div class="line">    var $conn = null;</div><div class="line">    var $dbname = null;</div><div class="line">    var $result = null;</div><div class="line">    function __construct() &#123;</div><div class="line">        $this-&gt;dbhost = Conn::$dbhost;</div><div class="line">        $this-&gt;dbuser = Conn::$dbuser;</div><div class="line">        $this-&gt;dbpass = Conn::$dbpass;</div><div class="line">        $this-&gt;dbname = Conn::$dbname;</div><div class="line">    &#125;</div><div class="line">    public function openConnection() &#123;</div><div class="line">        $this-&gt;conn = new mysqli($this-&gt;dbhost, $this-&gt;dbuser, $this-&gt;dbpass, $this-&gt;dbname);</div><div class="line">        if (mysqli_connect_errno())</div><div class="line">            echo new Exception(&quot;Could not establish connection with database&quot;);</div><div class="line">        &#125;</div><div class="line">        public function getConnection() &#123;</div><div class="line">            return $this-&gt;conn;</div><div class="line">        &#125;</div><div class="line">        public function closeConnection() &#123;</div><div class="line">            if ($this-&gt;conn != null)</div><div class="line">                 $this-&gt;conn-&gt;close();</div><div class="line">        &#125;</div><div class="line">        public function getUserDetails($email)</div><div class="line">        &#123;</div><div class="line">            $returnValue = array();</div><div class="line">            $sql = &quot;select * from users where email=&apos;&quot; . $email . &quot;&apos;&quot;;</div><div class="line">            $result = $this-&gt;conn-&gt;query($sql);</div><div class="line">            if ($result != null &amp;&amp; (mysqli_num_rows($result) &gt;= 1)) &#123;</div><div class="line">                $row = $result-&gt;fetch_array(MYSQLI_ASSOC);</div><div class="line">                if (!empty($row)) &#123;</div><div class="line">                    $returnValue = $row;</div><div class="line">                &#125;</div><div class="line">           &#125;</div><div class="line">           return $returnValue;</div><div class="line">        &#125;</div><div class="line">       public function getUserDetailsWithPassword($email, $userPassword)</div><div class="line">       &#123;</div><div class="line">           $returnValue = array();</div><div class="line">           $sql = &quot;select id,email,password from users where email=&apos;&quot; . $email . &quot;&apos; and password=&apos;&quot; .$userPassword . &quot;&apos;&quot;;</div><div class="line">           $result = $this-&gt;conn-&gt;query($sql);</div><div class="line">           if ($result != null &amp;&amp; (mysqli_num_rows($result) &gt;= 1)) &#123;</div><div class="line">               $row = $result-&gt;fetch_array(MYSQLI_ASSOC);</div><div class="line">               if (!empty($row)) &#123;</div><div class="line">                   $returnValue = $row;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           return $returnValue;</div><div class="line">       &#125;</div><div class="line">       public function registerUser($email, $password)</div><div class="line">       &#123;</div><div class="line">           $sql = &quot;insert into users set email=?, password=?&quot;;</div><div class="line">           $statement = $this-&gt;conn-&gt;prepare($sql);</div><div class="line">           if (!$statement)</div><div class="line">               throw new Exception($statement-&gt;error);</div><div class="line">               $statement-&gt;bind_param(&quot;ss&quot;, $email, $password);</div><div class="line">               $returnValue = $statement-&gt;execute();</div><div class="line">               return $returnValue;</div><div class="line">       &#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>The if you need userLogin, the code should be:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">require(&quot;Conn.php&quot;);</div><div class="line">require(&quot;MySQLDao.php&quot;);</div><div class="line">$email = htmlentities($_POST[&quot;email&quot;]);</div><div class="line">$password = htmlentities($_POST[&quot;password&quot;]);</div><div class="line">$returnValue = array();</div><div class="line"></div><div class="line">if(empty($email) || empty($password))</div><div class="line">&#123;</div><div class="line">    $returnValue[&quot;status&quot;] = &quot;error&quot;;</div><div class="line">    $returnValue[&quot;message&quot;] = &quot;Missing required field&quot;;</div><div class="line">    echo json_encode($returnValue);</div><div class="line">    return;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$secure_password = md5($password);</div><div class="line"></div><div class="line">$dao = new MySQLDao();</div><div class="line">$dao-&gt;openConnection();</div><div class="line">$userDetails = $dao-&gt;getUserDetailsWithPassword($email,$secure_password);</div><div class="line"></div><div class="line">if(!empty($userDetails))</div><div class="line">&#123;</div><div class="line">    $returnValue[&quot;status&quot;] = &quot;Success&quot;;</div><div class="line">    $returnValue[&quot;message&quot;] = &quot;User is registered&quot;;</div><div class="line">    echo json_encode($returnValue);</div><div class="line">&#125; else &#123;</div><div class="line"></div><div class="line">    $returnValue[&quot;status&quot;] = &quot;error&quot;;</div><div class="line">    $returnValue[&quot;message&quot;] = &quot;User is not found&quot;;</div><div class="line">    echo json_encode($returnValue);</div><div class="line">&#125;</div><div class="line"></div><div class="line">$dao-&gt;closeConnection();</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>Then, the code for register:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">require(&quot;Conn.php&quot;);</div><div class="line">require(&quot;MySQLDao.php&quot;);</div><div class="line"></div><div class="line">$email = htmlentities($_POST[&quot;email&quot;]);</div><div class="line">$password = htmlentities($_POST[&quot;password&quot;]);</div><div class="line"></div><div class="line">$returnValue = array();</div><div class="line"></div><div class="line">if(empty($email) || empty($password))</div><div class="line">&#123;</div><div class="line">    $returnValue[&quot;status&quot;] = &quot;error&quot;;</div><div class="line">    $returnValue[&quot;message&quot;] = &quot;Missing required field&quot;;</div><div class="line">    echo json_encode($returnValue);</div><div class="line">    return;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$dao = new MySQLDao();</div><div class="line">$dao-&gt;openConnection();</div><div class="line">$userDetails = $dao-&gt;getUserDetails($email);</div><div class="line"></div><div class="line">if(!empty($userDetails))</div><div class="line">&#123;</div><div class="line">    $returnValue[&quot;status&quot;] = &quot;error&quot;;</div><div class="line">    $returnValue[&quot;message&quot;] = &quot;This email has been registered.:-(&quot;;</div><div class="line">    echo json_encode($returnValue);</div><div class="line">    return;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$secure_password = md5($password); // I do this, so that user password cannot be read even by me</div><div class="line"></div><div class="line">$result = $dao-&gt;registerUser($email,$secure_password);</div><div class="line"></div><div class="line">if($result)</div><div class="line">&#123;</div><div class="line">    $returnValue[&quot;status&quot;] = &quot;Success&quot;;</div><div class="line">    $returnValue[&quot;message&quot;] = &quot;You have registered successfully.:-)&quot;;</div><div class="line">    echo json_encode($returnValue);</div><div class="line">    return;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$dao-&gt;closeConnection();</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>Here you need to upload all these php code on your server and remember, when you connect our app to the mysql server is to use these php code.</p>
+<h1 id="Using-our-app-to-request-that-url-and-to-run-step-2"><a href="#Using-our-app-to-request-that-url-and-to-run-step-2" class="headerlink" title="Using our app to request that url and to run step 2"></a>Using our app to request that url and to run step 2</h1><h1 id="Receive-the-data-back-from-that-URL"><a href="#Receive-the-data-back-from-that-URL" class="headerlink" title="Receive the data back from that URL"></a>Receive the data back from that URL</h1><p>Here is my swift code for query these data, this is the code for login:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">let myUrl = NSURL(string: &quot;http://hanslen.me/php/userLogin.php&quot;)</div><div class="line">         let request = NSMutableURLRequest(URL: myUrl!)</div><div class="line">         request.HTTPMethod = &quot;POST&quot;</div><div class="line">         </div><div class="line">         let postString = &quot;email=\(userEmail)&amp;password=\(userPassword)&quot;</div><div class="line">         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)</div><div class="line"></div><div class="line">         let task = NSURLSession.sharedSession().dataTaskWithRequest(request)&#123;</div><div class="line">             data, response, error in</div><div class="line">             if(error != nil)&#123;</div><div class="line">                 print(&quot;error=\(error)&quot;)</div><div class="line">                 return</div><div class="line">             &#125;</div><div class="line">             do &#123;</div><div class="line">                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary</div><div class="line"></div><div class="line">                 if let parseJSON = json</div><div class="line">                 &#123;</div><div class="line">                     let resultValue = parseJSON[&quot;status&quot;] as? String</div><div class="line">                     print(&quot;results: \(resultValue)&quot;)</div><div class="line">                     let resultMessage = parseJSON[&quot;message&quot;] as? String</div><div class="line">                     print(&quot;message: \(resultMessage)&quot;)</div><div class="line">                     let returnValue = parseJSON[&quot;returnwow&quot;] as? String</div><div class="line">                     print(&quot;return0.0:\(returnValue)&quot;)</div><div class="line">                     dispatch_async(dispatch_get_main_queue(), &#123;</div><div class="line">                         if(resultValue == &quot;Success&quot;)&#123;</div><div class="line">                             self.createAlertMsg(&quot;Success&quot;, Message: &quot;Log in success&quot;)</div><div class="line">                             self.saveContext()</div><div class="line">                         &#125;</div><div class="line">                         else&#123;</div><div class="line">                             self.createAlertMsg(&quot;Error&quot;, Message: &quot;The Email and Password does not match&quot;)</div><div class="line">                         &#125;</div><div class="line">                     &#125;)</div><div class="line">                     </div><div class="line">                 &#125;</div><div class="line"></div><div class="line">             &#125;catch</div><div class="line">             &#123;</div><div class="line">                 print(error)</div><div class="line">             &#125;</div></pre></td></tr></table></figure></p>
+<p>Then here is the code for register:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">let URL:NSURL = NSURL(string: &quot;http://hanslen.me/php/userRegister.php&quot;)!</div><div class="line">        let request = NSMutableURLRequest(URL: URL)</div><div class="line">        request.HTTPMethod = &quot;POST&quot;</div><div class="line">        </div><div class="line">        let email:String = emailTF.text!</div><div class="line">        let password:String = passwordTF.text!</div><div class="line">        let postString = &quot;email=\(email)&amp;password=\(password)&quot;</div><div class="line">        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)</div><div class="line">        </div><div class="line">        let task = NSURLSession.sharedSession().dataTaskWithRequest(request)&#123;</div><div class="line">            data, response, error in</div><div class="line">            if(error != nil)&#123;</div><div class="line">                print(&quot;error = \(error)&quot;)</div><div class="line">                return</div><div class="line">            &#125;</div><div class="line">//            var err:NSError?</div><div class="line">            do &#123;</div><div class="line">                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary</div><div class="line">                </div><div class="line">                if let parseJSON = json</div><div class="line">                &#123;</div><div class="line">                    let resultValue = parseJSON[&quot;status&quot;] as? String</div><div class="line">                    print(&quot;results: \(resultValue)&quot;)</div><div class="line">                    </div><div class="line">                    var isUserRegistered:Bool = false</div><div class="line">                    if(resultValue == &quot;Success&quot;)&#123;</div><div class="line">                        isUserRegistered = true</div><div class="line">                    &#125;</div><div class="line">                    </div><div class="line">                    var messageToDisplay:String = parseJSON[&quot;message&quot;] as! String!</div><div class="line">                    if(!isUserRegistered)&#123;</div><div class="line">                        messageToDisplay = parseJSON[&quot;message&quot;] as! String!</div><div class="line">                    &#125;</div><div class="line">                    print(&quot;message to display&quot;,messageToDisplay)</div><div class="line">                    </div><div class="line">                    dispatch_async(dispatch_get_main_queue(), &#123;</div><div class="line">                        self.createAlertMsg(&quot;Success&quot;, Message: messageToDisplay)</div><div class="line">                    &#125;)</div><div class="line">                &#125;</div><div class="line">                </div><div class="line">            &#125;catch</div><div class="line">            &#123;</div><div class="line">                print(error)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        task.resume()</div></pre></td></tr></table></figure></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

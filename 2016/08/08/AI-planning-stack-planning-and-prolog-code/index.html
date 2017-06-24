@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="[AI planning] stack planning and prolog code"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>[AI planning] stack planning and prolog code - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('motion-graphics-background.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>[AI planning] stack planning and prolog code</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2016-08-08
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Artificial-intelligence/">#Artificial intelligence</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>In the previous article, I talked about the forward planning. However, there are still some problem:</p>
+<ol>
+<li>Plans may contain redundant steps</li>
+<li>Planning may not terminate for some problems(due to depth first search)</li>
+</ol>
+<p>So a better way to solve STRIPS problems is to search backwards from the goal in world(situation) space.</p>
+<ul>
+<li>Goals are matched against operator postconditions</li>
+<li>Operator preconditions becomes subgoals</li>
+<li>We stop when the operator preconditions(subgoals) are satisfied in the initial state</li>
+</ul>
+<p>Searching backwards often reduces the branching factor.</p>
+<h1 id="Goal-stack-planning-algorithm"><a href="#Goal-stack-planning-algorithm" class="headerlink" title="Goal stack planning algorithm:"></a>Goal stack planning algorithm:</h1><ol>
+<li>Assume stack(starts empty), plan(starts empty), state(starts with initial state)</li>
+<li>Push the original conjunction of goals on the stack</li>
+<li>Repeat until the stack is empty</li>
+</ol>
+<ul>
+<li>if the top of the stack is an achieved goal, pop it from the stack</li>
+<li>if the top of the stack is a conjunctive goal, push its unachieved subgoals on the stack</li>
+<li>if the top of the stack is a single unachieved goal, replace it by an action that achieves the goal and push the action’s precondition on the stack</li>
+<li>if the top if the stack is an action, pop it from the stack, execute it(add it to the plan) and update the state using the action’s add and delete lists</li>
+</ul>
+<h1 id="Goal-stack-planning-in-Prolog"><a href="#Goal-stack-planning-in-Prolog" class="headerlink" title="Goal stack planning in Prolog:"></a>Goal stack planning in Prolog:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">:- use_module(library(lists)).</div><div class="line"></div><div class="line">gsp(S,G,P) :-</div><div class="line">    list_to_set(S,SS),</div><div class="line">    list_to_set(G,GS),</div><div class="line">    gsp(SS,GS,P,_).</div><div class="line"></div><div class="line">gsp(S,G,[],S) :- holds(G,S).</div><div class="line">gsp(S,[G|Gs],P,S1) :-</div><div class="line">    holds([G],S), !,</div><div class="line">    gsp(S,Gs,P,S1).</div><div class="line">gsp(S,[G|Gs],P,S3) :-</div><div class="line">    pop(O,Pre,A,D),</div><div class="line">    member(G,A),</div><div class="line">    gsp(S,Pre,P1,S1),</div><div class="line">    apply(S1,A,D,S2),</div><div class="line">    gsp(S2,Gs,P2,S3),</div><div class="line">    append(P1,[O|P2],P).</div><div class="line"></div><div class="line">holds([],_).</div><div class="line">holds([Pre|Ps],S) :- select(Pre,S,S1), holds(Ps,S1).</div><div class="line"></div><div class="line">apply(S,A,D,S1) :-</div><div class="line">    subtract(S,D,S2), union(S2,A,S1).</div><div class="line"></div><div class="line">pop(move_to_table(X),</div><div class="line">    [block(X),block(Y),on(X,Y),clear(X)],</div><div class="line">    [on(X,table),clear(Y)],</div><div class="line">    [on(X,Y)]).</div><div class="line">pop(move(X,Y),</div><div class="line">    [block(X),block(Y),on(X,Z),clear(X),clear(Y)],</div><div class="line">    [on(X,Y),clear(Z)],</div><div class="line">    [on(X,Z),clear(Y)]).</div><div class="line"></div><div class="line">initial_state([block(a),block(b),block(c),</div><div class="line">	       on(b,table),on(c,a),on(a,table),clear(b),clear(c)]).</div><div class="line">goal_state([on(a,b),on(b,c),on(c,table)]).</div></pre></td></tr></table></figure>
+<p>Here is some description for the code:<br><code>gsp</code> will be terminated when the states contains all the goals, that means, all the goals have been achieved. Else if the “states” contains the top of the stack of goals, we need to pop that goal. Else, we need to find a action which can produce a add list which contains the top of the stack(Goal). Then achieve that precondition, it will come out with a newState, apply the previous add list and delete list to the newState, then the newState will be the most updated state. We continue searching based on the new state.</p>
+<h1 id="Important-notes"><a href="#Important-notes" class="headerlink" title="Important notes:"></a>Important notes:</h1><p>The order of the <code>pop</code> really matters, for example,<br>we can not write:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">pop(move(X,Y),</div><div class="line">    [clear(X),clear(Y),block(Y),on(X,Z)],</div><div class="line">    [on(X,Y),clear(Z)],</div><div class="line">    [on(X,Z),clear(Y)]).</div><div class="line">pop(move_to_table(X),</div><div class="line">    [clear(X),block(Y),on(X,Y)],</div><div class="line">    [on(X,table),clear(Y)],</div><div class="line">    [on(X,Y)]).</div></pre></td></tr></table></figure>
+<p>We need to write:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">pop(move_to_table(X),</div><div class="line">    [block(X),block(Y),on(X,Y),clear(X)],</div><div class="line">    [on(X,table),clear(Y)],</div><div class="line">    [on(X,Y)]).</div><div class="line">pop(move(X,Y),</div><div class="line">    [block(X),block(Y),on(X,Z),clear(X),clear(Y)],</div><div class="line">    [on(X,Y),clear(Z)],</div><div class="line">    [on(X,Z),clear(Y)]).</div></pre></td></tr></table></figure></p>
+<p>It is so important, because clear precondition must appear first, even before block. We have no operator to achieve it, so it has to appear last, and match as part of the complete goal state.<br>This diagram illustrate the process of the goal stack planning:<br><img src="/2016/08/08/AI-planning-stack-planning-and-prolog-code/stack1.png" alt="stack"></p>
+<h1 id="Problems-with-goal-stack-planning"><a href="#Problems-with-goal-stack-planning" class="headerlink" title="Problems with goal stack planning:"></a>Problems with goal stack planning:</h1><ul>
+<li>Working backwards from unachieved goals in goal stack planning focuses search and often leads to shorter plans</li>
+<li>however there still problem:<ol>
+<li>plans may still contain redundant steps</li>
+<li>plans may not achieve the goal</li>
+<li>planning may not terminate for some problems(due to depth first search)</li>
+</ol>
+</li>
+<li>More difficult to handle existentially quantified goals(general issue with regression planning)</li>
+</ul>
+<p>Sometimes, it may exist clobbering. Clobbering is steps later in the plan destroy a state created by steps earlier in the plan that achieves an(already processed) subgoal. <font style="color:red">So we need to protect the achieved goals.</font> The following is the prolog code with Goal stack planning with protected goals:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">:- use_module(library(lists)).</div><div class="line"></div><div class="line">% gsppg(+State,+Goals,-Plan): Plan is a sequence of operators</div><div class="line">% that applied in State achieves Goals</div><div class="line">gsppg(S,Gs,P) :-</div><div class="line">    list_to_set(S,SS),</div><div class="line">    list_to_set(Gs,GS),</div><div class="line">    gsppg(SS,GS,[],P,_).</div><div class="line"></div><div class="line">% gsppg(+State,+Goals,+ProtectedGoals,-Plan,-NewState): Plan is a</div><div class="line">% sequence of operators that applied in State achieves Goals without</div><div class="line">% clobbering any goal in ProtectedGoals and results in NewState</div><div class="line">gsppg(S,Gs,_,[],S) :- holds(Gs,S).</div><div class="line">gsppg(S,Gs,PGs,P,S3) :-</div><div class="line">    select_goal(S,Gs,G),</div><div class="line">    pop(O,Pre,A,D),</div><div class="line">    member(G,A),</div><div class="line">    intersection(D,PGs,[]),</div><div class="line">    intersection(Pre,PGs,[]),   % avoid infinite regress</div><div class="line">    gsppg(S,Pre,[G|PGs],P1,S1),</div><div class="line">    apply(S1,A,D,S2),</div><div class="line">    gsppg(S2,Gs,[G|PGs],P2,S3),</div><div class="line">    append(P1,[O|P2],P).</div><div class="line"></div><div class="line">% holds(+Goal,+State): Goal is achieved in State. As operators are</div><div class="line">% ground, we can use member/2 rather than select/3.</div><div class="line">holds([],_).</div><div class="line">holds([G|Gs],S) :- member(G,S), holds(Gs,S).</div><div class="line"></div><div class="line">% select_goal(State,+Goals,+Goal): Goal is goal in Goals not achieved in</div><div class="line">% State</div><div class="line">select_goal(S,Gs,G) :-</div><div class="line">    member(G,Gs), \+ member(G,S).</div><div class="line"></div><div class="line">apply(S,A,D,S1) :-</div><div class="line">    subtract(S,D,S2), union(S2,A,S1).</div><div class="line"></div><div class="line">pop(move_to_table(X),</div><div class="line">    [clear(X),on(X,Y)],</div><div class="line">    [on(X,table),clear(Y)],</div><div class="line">    [on(X,Y)]) :-</div><div class="line">    block(X), block(Y), X \= Y.</div><div class="line">pop(move(X,Y),</div><div class="line">    [clear(X),clear(Y),on(X,Z)],</div><div class="line">    [on(X,Y),clear(Z)],</div><div class="line">    [on(X,Z),clear(Y)]) :-</div><div class="line">    block(X), block(Y), block_or_table(Z), X \= Y, X \= Z, Y \= Z.</div><div class="line"></div><div class="line">block(a).</div><div class="line">block(b).</div><div class="line">block(c).</div><div class="line"></div><div class="line">block_or_table(X) :- block(X).</div><div class="line">block_or_table(table).</div><div class="line"></div><div class="line">initial_state([on(b,table),on(c,a),on(a,table),clear(b),clear(c)]).</div><div class="line">goal_state([on(a,b),on(b,c),on(c,table)]).</div></pre></td></tr></table></figure></p>
+<p>Here is some description for these code: Firstly, it selects a goal which is a member of the goals but it’s not a member of the states. <code>intersection(A, B, C)</code>, C will be the same element between A and B, if it does not contain any repeated element, then it will return []. So <code>intersection(D,PGs,[])</code> ensures that the achieved goals do not contain the delete item. <code>intersection(Pre,PGs,[])</code> ensures that the achieved goals do not contain the precondition. (It can avoid infinite regress). There is a very important point that the <font style="color:red">operator mush be ground</font>!  You maybe confused at what is a ground operator, the below operator is not a ground operator:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> pop(move(X,Y),</div><div class="line">     [block(X),block(Y),</div><div class="line">clear(X),clear(Y),on(X,Z)], [on(X,Y),clear(Z)], [clear(Y),on(X,Z)]).</div></pre></td></tr></table></figure>
+<p>This is a ground operator:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pop(move(X,Y),</div><div class="line"> [clear(X),clear(Y),on(X,Z)],</div><div class="line"> [on(X,Y),clear(Z)],</div><div class="line"> [on(X,Z),clear(Y)]) :-</div><div class="line"> block(X), block(Y), block_or_table(Z), X \= Y, X \= Z, Y \= Z.</div></pre></td></tr></table></figure>
+<p> Because that may cause the clobber, so the only(simple) way to ensure that an operator won’t clobber a protected goal, is to force the planner to guess values for all uninstantiated variables in the operator.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

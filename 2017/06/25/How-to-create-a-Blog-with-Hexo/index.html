@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="How to create a Blog with Hexo"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>How to create a Blog with Hexo - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('oneToOne-1024x320.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>How to create a Blog with Hexo</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-06-25
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/programming/">#programming</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>If you are an old friend from my blog, you must notice that my blog style has been changed. That’s because I convert my wordpress blog to this hexo blog based on the <a href="https://pages.github.com/" target="_blank" rel="external">Github Pages</a>. 😝 It makes me feel more like a Geek~<br>This tutorial is going to talk about how to use hexo, and I will not mention too much with the usage of Github Pages. The official website has the tutorial. :D</p>
+<h1 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h1><p><a href="https://hexo.io" target="_blank" rel="external">Hexo</a> is a fast, simple and powerful blog framework, and you can write posts in Markdown (The official doc says other languages should be fine as well). Then, it will generate static files with a beutiful theme in seconds.</p>
+<p>You need to have: (<a href="https://hexo.io/docs/" target="_blank" rel="external">Installation doc</a>)</p>
+<ol>
+<li>Node.js</li>
+<li>Git </li>
+</ol>
+<p>If your computer already has these, just install Hexo with npm:<br><code>npm install -g hexo-cli</code></p>
+<h1 id="Set-up-your-hexo-blog"><a href="#Set-up-your-hexo-blog" class="headerlink" title="Set up your hexo blog:"></a>Set up your hexo blog:</h1><p>Once Hexo is installed, run these command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folder&gt;</div><div class="line">cd &lt;folder&gt;</div><div class="line">npm install</div></pre></td></tr></table></figure></p>
+<p>Now you have your hexo blog.<br>Have a look at the <code>_config.yml</code>, in this file, you can configure the settings. For example, title, author, language, etc. </p>
+<p>You can run your blog by command:<br><code>hexo g</code><br><code>hexo s</code><br>Each time, when you change the code in <code>_config.yml</code>, you must run <code>hexo g</code>. Otherwise, it will not make any senses.<br>Type: <code>localhost:4000</code> in your browser, you can see your new hexo page. <font style="color:red">Sometimes, you need to type 0.0.0.0:4000 (If localhost:4000 does not work)</font></p>
+<p>If these errors occurs when you run <code>hexo g</code> or <code>hexo s</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123; [Error: Cannot find module &apos;./build/Release/DTraceProviderBindings&apos;] code: &apos;MODULE_NOT_FOUND&apos; &#125;</div><div class="line">&#123; [Error: Cannot find module &apos;./build/default/DTraceProviderBindings&apos;] code: &apos;MODULE_NOT_FOUND&apos; &#125;</div><div class="line">&#123; [Error: Cannot find module &apos;./build/Debug/DTraceProviderBindings&apos;] code: &apos;MODULE_NOT_FOUND&apos; &#125;</div></pre></td></tr></table></figure></p>
+<p>Try this command:<br><code>npm install hexo --no-optional</code>.</p>
+<h1 id="Play-with-your-Hexo-blog"><a href="#Play-with-your-Hexo-blog" class="headerlink" title="Play with your Hexo blog:"></a>Play with your Hexo blog:</h1><p>If you want to create a new post, try this command:<br><code>hexo new post &quot;My new post&quot;</code><br>And this new post will automatically appear in your HomePage.<br>If you want to enable ‘tags’. For example, xxx.com/tags to present the posts by tags.<br>You need to run command:<br><code>hexo new page tags</code><br>The for each post, at the start, add your own tag.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: My new post</div><div class="line">date: 2017-06-25 14:27:50</div><div class="line">tags: [&apos;programming&apos;, &apos;tutorial&apos;]</div><div class="line">cover: myPic.png</div><div class="line">---</div></pre></td></tr></table></figure></p>
+<p>You may pay attention to attribute cover, and it is used for editting the cover picture of that post. The URL should be inside your post own folder.</p>
+<p>After you finish your blog, you may want to put it on Github pages as well. Let’s go back to <code>_config.yml</code>, and add this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/xxxxx.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>The repo is just your Github Pages Repo. :D<br>And then run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo deploy</div></pre></td></tr></table></figure></p>
+<p>If you see<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Branch master set up to track remote branch master from https://github.com/xxx.git.</div><div class="line">INFO  Deploy done: git</div></pre></td></tr></table></figure></p>
+<p>That means you have successfully deployed your blog. 😊</p>
+<h1 id="Using-a-theme-for-my-Blog"><a href="#Using-a-theme-for-my-Blog" class="headerlink" title="Using a theme for my Blog"></a>Using a theme for my Blog</h1><p>You can download the theme from <a href="https://hexo.io/themes/" target="_blank" rel="external">themes</a>. And in the <code>_config.yml</code>, remember to change the following lines to your theme:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: my_theme</div></pre></td></tr></table></figure></p>
+<p>Hope you will like your Hexo Blog. :-)</p>
+<p>Last but not least, for Mac users, I recommend ‘MacDown’ for writting your Markdown. 😎</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br></p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

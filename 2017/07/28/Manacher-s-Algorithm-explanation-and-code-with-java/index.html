@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Jiahe Chen"/>
+        <meta property="og:title" content="Manacher&#39;s Algorithm explanation and code with java"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives - Jiahe Chen</title>
+    <title>Manacher&#39;s Algorithm explanation and code with java - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -151,105 +151,89 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
-<header class="intro-header" style="background-image: url('img/cinnamon-default-header-1024x320.png')">
+<header class="intro-header" style="background-image: url('algorithm-assignment-help.png')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Archives</h1>
+                <div class="post-heading">
+                    <h1>Manacher's Algorithm explanation and code with java</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-07-28
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Algorithm/">#Algorithm</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2016/06/14/Unity-VR-Google-Cardboard’s-VR-Gaze-cursor-and-Gaze-input/">
-        <h1 class="post-title archive">
-            [Unity VR]Google Cardboard’s VR Gaze cursor and Gaze input
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2016-06-14
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2016/05/02/AI-problem-N-queens-problem-–-solved-in-prolog/">
-        <h1 class="post-title archive">
-            [AI problem] N queens problem – solved in prolog
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2016-05-02
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Manacher’s Algorithm is used to solve the problem of longest Palindromic Substring problem. Compared with brute force solution (which time complexity is O(N^3), and space complexity is O(N^3)), Manacher’s Algorithm is much better. (Time complexity is O(N), space complexity is O(N)). This post is going to illustrate this amazing algorithm.</p>
+<h1 id="preprocess-the-String"><a href="#preprocess-the-String" class="headerlink" title="preprocess the String"></a>preprocess the String</h1><p>When we are solving this problem, we may need to classify different situation: 1. String.length() is odd 2. String.length() is even<br>We can preprocess the origin string to make it easier.<br>The solution is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bob -&gt; !#b#o#b#</div><div class="line">noon -&gt; !#n#o#o#n#</div></pre></td></tr></table></figure></p>
+<p>The reason for the first element “!” is to avoid crossing the border.For example, when matching <code>#b#o#b#</code>, we will match to index -1 and index 7. And it<br><img src="/2017/07/28/Manacher-s-Algorithm-explanation-and-code-with-java/1.png" alt="cross_border"><br>Then the main idea of this algorithm is:<br>we need to create another array to store the number of palindromic substring. For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">!#n#o#o#n#          &lt;- s</div><div class="line">1121252121		   &lt;- Len</div></pre></td></tr></table></figure></p>
+<p>In this example, I call that array “p”. And the max(Len) -1 should be the length of the longest Palindromic Substring. When our question becomes -&gt; how to calculate this array Len.</p>
+<h1 id="Main-idea"><a href="#Main-idea" class="headerlink" title="Main idea"></a>Main idea</h1><h2 id="i-lt-rightMax"><a href="#i-lt-rightMax" class="headerlink" title="i &lt;= rightMax:"></a>i &lt;= rightMax:</h2><h3 id="First-Condition"><a href="#First-Condition" class="headerlink" title="First Condition"></a>First Condition</h3><p><img src="/2017/07/28/Manacher-s-Algorithm-explanation-and-code-with-java/2.png" alt="firstCondition"><br>In this condition, Len[i] = Len[j]. Because the rightest index of palindromic string at index i is less than the rightMax.</p>
+<h3 id="Second-Condition"><a href="#Second-Condition" class="headerlink" title="Second Condition"></a>Second Condition</h3><p><img src="/2017/07/28/Manacher-s-Algorithm-explanation-and-code-with-java/3.png" alt="firstCondition2"></p>
+<p>In this condition, We know that Len[i] &lt;= Len[j], so when we are calculating Len[i], it will be quicker if we can use the known information of Len[j]. What we need to do is to compare the expanded string to check whether we can expand this palindromic Substring.</p>
+<h2 id="i-gt-rightMax"><a href="#i-gt-rightMax" class="headerlink" title="i &gt; rightMax"></a>i &gt; rightMax</h2><p><img src="/2017/07/28/Manacher-s-Algorithm-explanation-and-code-with-java/4.png" alt="not"></p>
+<p>In this condition, we know i is not in the range of the palindromic string at index middlePoint. So we know nothing of index i. What we need to do is compare the expanded string and check. Also, update the middlePoint and rightMax after the caculation.</p>
+<h1 id="Java-code-of-this-algorithm"><a href="#Java-code-of-this-algorithm" class="headerlink" title="Java code of this algorithm"></a>Java code of this algorithm</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">	public String longestPalindrome(String s) &#123;</div><div class="line">//		initialize the array</div><div class="line">		String t = &quot;!#&quot;;</div><div class="line">		for(char s1 : s.toCharArray())&#123;</div><div class="line">			t += (s1+&quot;#&quot;);</div><div class="line">		&#125;</div><div class="line">		int[] p = new int[t.length()];</div><div class="line">		int id = 0, mx = 0, resLen = 0, resCenter = 0;</div><div class="line">		for(int i = 1; i &lt; t.length(); i++)&#123;</div><div class="line">			p[i] = mx &gt; i?Math.min(mx-i, p[2*id-i]):1;</div><div class="line">			while(i+p[i] &lt; t.length())&#123;</div><div class="line">				if(t.charAt(i+p[i]) == t.charAt(i-p[i]))&#123;</div><div class="line">					p[i]++;</div><div class="line">				&#125;</div><div class="line">				else&#123;</div><div class="line">					break;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			if(mx &lt; i + p[i])&#123;</div><div class="line">				id = i;</div><div class="line">				mx = i + p[i];</div><div class="line">			&#125;</div><div class="line">			if(resLen &lt; p[i])&#123;</div><div class="line">				resLen = p[i];</div><div class="line">				resCenter = i;</div><div class="line">			&#125;	</div><div class="line">		&#125;</div><div class="line">		return s.substring((resCenter-resLen)/2, (resCenter-resLen)/2 + (resLen-1));</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>If you have any questions, please leave a comment below.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2016/04/18/Using-socket-io-to-create-a-chatRoom/">
-        <h1 class="post-title archive">
-            Using socket.io to create a chatRoom
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2016-04-18
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2016/03/10/AI-planning-Partial-order-planning/">
-        <h1 class="post-title archive">
-            [AI planning] Partial order planning
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2016-03-10
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2016/03/01/Swift-in-Xcode-Take-photo-or-select-image-from-album/">
-        <h1 class="post-title archive">
-            [Swift in Xcode]Take photo or select image from album
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2016-03-01
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/page/3/">&larr;  Newer Posts</a></li>
-    
-    
-        <li class="next"><a href="/archives/page/5/">Older Posts  &rarr;</a></li>
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
@@ -344,7 +328,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>

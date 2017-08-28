@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Jiahe Chen"/>
+        <meta property="og:title" content="Solving Regular Expression Matching with Dynamic programming in Java"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Algorithm - Jiahe Chen</title>
+    <title>Solving Regular Expression Matching with Dynamic programming in Java - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -151,88 +151,140 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
-<header class="intro-header" style="background-image: url('img/cinnamon-default-header-1024x320.png')">
+<header class="intro-header" style="background-image: url('mysql-1024x320.png')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>#Algorithm</h1>
+                <div class="post-heading">
+                    <h1>Solving Regular Expression Matching with Dynamic programming in Java</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-08-28
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Algorithm/">#Algorithm</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2017/08/28/Solving-Regular-Expression-Matching-with-Dynamic-programming/">
-        <h1 class="post-title archive">
-            Solving Regular Expression Matching with Dynamic programming in Java
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-08-28
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2017/07/28/Manacher-s-Algorithm-explanation-and-code-with-java/">
-        <h1 class="post-title archive">
-            Manacher's Algorithm explanation and code with java
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-07-28
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Here is the description of Regular Expression Matching from Leetcode:</p>
+<pre>
+'.' Matches any single character.
+'*' Matches zero or more of the preceding element.
+
+The matching should cover the entire input string (not partial).
+
+The function prototype should be:
+bool isMatch(const char *s, const char *p)
+
+Some examples:
+isMatch("aa","a") → false
+isMatch("aa","aa") → true
+isMatch("aaa","aa") → false
+isMatch("aa", "a*") → true
+isMatch("aa", ".*") → true
+isMatch("ab", ".*") → true
+isMatch("aab", "c*a*b") → true
+</pre>
+And the default code is:
+<pre>
+public boolean isMatch(String s, String p){
+}
+</pre>
+
+<h1 id="Using-Dynamic-programming-to-solve-it"><a href="#Using-Dynamic-programming-to-solve-it" class="headerlink" title="Using Dynamic programming to solve it"></a>Using Dynamic programming to solve it</h1><p>Firstly, we need to create a boolean array.<br><code>boolean[][] map = new boolean[s.length+1][p.length+1]</code> (we called it map). Because the map[0][0] should be true, and it presents that “” is matched with “”.<br>Secondly, let’s think about the conditions:</p>
+<ol>
+<li>s: abc   — p: abc or p: a.c (In this case, s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == ‘.’), map[i][j] = map[i-1][j-1] <font style="color:red">Remember that map starts with “”, so to match it, map[i] -&gt; s.charAt(i-1) </font></li>
+<li><code>p.charAt(j-1) == &#39;*&#39;</code><br>This is condition, things mean to be more complex. We will have two sub condition:<br><ul><br><li>We assign map[i][j] = map[i][j-2], which is to skip <code>&#39;*&#39;</code>. Because <code>&#39;*&#39;</code> matches zero or more of the preceding element.</li><br><li>if(s.charAt(i-1) == p.charAt(j-2) || p.charAt(j-2) == ‘.’)</li><br></ul><br>So when p.charAt(j-1) == ‘*’, the boolean value could be map[i][j-2] || map[i-1][j].</li>
+</ol>
+<h1 id="Sepcial-case-to-think-about"><a href="#Sepcial-case-to-think-about" class="headerlink" title="Sepcial case to think about"></a>Sepcial case to think about</h1><p>When the array is <code>&quot;a*b*&quot;</code>.<br>At first, we need to consider these special condition.<br>p.charAt(i-1) == ‘*’, map[0][i] = map[0][i-2].</p>
+<h1 id="Java-Code"><a href="#Java-Code" class="headerlink" title="Java Code:"></a>Java Code:</h1><pre>
+<code>
+public boolean isMatch(String s, String p) {
+        boolean[][] map = new boolean[s.length()+1][p.length()+1];
+        map[0][0] = true;
+        for(int i = 1; i < p.length()+1; i++){
+            if(p.charAt(i-1) == '*'){
+                map[0][i] = map[0][i-2];
+            }
+        }
+
+        for(int i = 1; i < s.length()+1;i++){
+            for(int j = 1; j < p.length()+1;j++){
+                if(s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.'){
+                    map[i][j] = map[i-1][j-1];
+                }
+                else if(p.charAt(j-1) == '*'){
+                    map[i][j] = map[i][j-2];
+                    if(p.charAt(j-2) == '.' || p.charAt(j-2) == s.charAt(i-1)){
+                        map[i][j] = map[i-1][j] || map[i][j];
+                    }
+                }
+                else{
+                    map[i][j] = false;
+                }
+            }
+        }
+        return map[s.length()][p.length()];
+    }
+</code>
+</pre>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2017/07/05/Sliding-window-algorithm-explanation-and-python-examples/">
-        <h1 class="post-title archive">
-            Sliding window algorithm explanation and python examples
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-07-05
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2017/02/06/KMP-Algorithm-explanation-and-python-code/">
-        <h1 class="post-title archive">
-            KMP Algorithm explanation and python code
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-02-06
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
@@ -328,7 +380,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>

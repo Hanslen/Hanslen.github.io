@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Jiahe Chen&#39;s personal blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jiahe Chen (Hanslen)">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Best Time to Buy and Sell Stock series with Dynamic Programming in Java"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Jiahe Chen&#39;s personal blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Jiahe Chen"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Best Time to Buy and Sell Stock series with Dynamic Programming in Java - Jiahe Chen</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-101661435-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+    <!-- favicon -->
+    
+    <link rel="icon" href="img/icon.jpg">
+    
+	
+</head>
+
+
+<body>
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hanslen</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
+                            
+                                About me
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hanslen">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('motion-graphics-background.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Best Time to Buy and Sell Stock series with Dynamic Programming in Java</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-10-15
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Algorithm/">#Algorithm</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>This article is going to explain the Best Time to Buy and Sell Stock series on LeetCode. The following is the relative link:</p>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/" target="_blank" rel="external">121 Best Time to Buy and Sell Stock</a></p>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/" target="_blank" rel="external">122 Best Time to Buy and Sell Stock II</a></p>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/" target="_blank" rel="external">309 Best Time to Buy and Sell Stock with Cooldown</a></p>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/" target="_blank" rel="external">714 Best Time to Buy and Sell Stock with Transaction Fee</a></p>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/" target="_blank" rel="external">123 Best Time to Buy and Sell Stock III</a></p>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/" target="_blank" rel="external">188 Best Time to Buy and Sell Stock IV</a></p>
+<h1 id="Best-Time-to-Buy-and-Sell-Stock"><a href="#Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Best Time to Buy and Sell Stock"></a>Best Time to Buy and Sell Stock</h1><p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: [7, 1, 5, 3, 6, 4]</div><div class="line">Output: 5</div><div class="line"></div><div class="line">max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: [7, 6, 4, 3, 1]</div><div class="line">Output: 0</div><div class="line"></div><div class="line">In this case, no transaction is done, i.e. max profit = 0.</div></pre></td></tr></table></figure>
+<p>Because we are only permitted to complete at most one transaction, the problem becomes find the largest gap among the array max(xi-xj), i &gt; j.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> currMax = <span class="number">0</span>;</div><div class="line">  <span class="keyword">int</span> totalMax = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)&#123;</div><div class="line">      currMax = Math.max(<span class="number">0</span>, currMax+prices[i]-prices[i-<span class="number">1</span>]);</div><div class="line">      totalMax = Math.max(totalMax, currMax);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> totalMax;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Best-Time-to-Buy-and-Sell-Stock-II"><a href="#Best-Time-to-Buy-and-Sell-Stock-II" class="headerlink" title="Best Time to Buy and Sell Stock II"></a>Best Time to Buy and Sell Stock II</h1><p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<p>Because it allows multiple transaction as we like, so, when the gap between each time is greater than zero, we should do a transaction. And the logic is slightly simple:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)&#123;</div><div class="line">        <span class="keyword">int</span> tmp = prices[i]-prices[i-<span class="number">1</span>];</div><div class="line">        <span class="keyword">if</span>(tmp &gt; <span class="number">0</span>)&#123;</div><div class="line">            max += tmp; </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> max;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><a href="#Best-Time-to-Buy-and-Sell-Stock-with-Cooldown" class="headerlink" title="Best Time to Buy and Sell Stock with Cooldown"></a>Best Time to Buy and Sell Stock with Cooldown</h1><p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:</p>
+<ul>
+<li>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</li>
+<li>After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">prices = [1, 2, 3, 0, 2]</div><div class="line">maxProfit = 3</div><div class="line">transactions = [buy, sell, cooldown, buy, sell]</div></pre></td></tr></table></figure>
+<p>This problem can be solved by State Machine thinking. And I learned this problem the <a href="https://discuss.leetcode.com/topic/30680/share-my-dp-solution-by-state-machine-thinking?page=1" target="_blank" rel="external">leetcode Discussion</a></p>
+<p><img src="/2017/10/15/Best-Time-to-Buy-and-Sell-Stock-series-with-Dynamic-Programming-in-Java/state.png" alt="state"> We can know that s0 can be only obtained by rest at itself or rest from s2, s1 and be only obtained by rest at itself or buy from s0, s2 can be obtained only by sell product from s1.</p>
+<p>So we will have:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">s0[i] = Math.max(s0[i-<span class="number">1</span>],s2[i-<span class="number">1</span>]);</div><div class="line">s1[i] = Math.max(s1[i-<span class="number">1</span>],s0[i-<span class="number">1</span>]-prices[i]);</div><div class="line">s2[i] = s1[i-<span class="number">1</span>]+prices[i];</div></pre></td></tr></table></figure>
+<p>We know that s1 will never be the largest state, because it buy(cost money) and remain same must be smaller than s0. So, the maximum state must among s0 or s2.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(prices.length == <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> s0 = <span class="number">0</span>, s0prev = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> s1 = <span class="number">0</span>, s1prev=-prices[<span class="number">0</span>];</div><div class="line">    <span class="keyword">int</span> s2 = <span class="number">0</span>, s2prev=Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> p : prices)&#123;</div><div class="line">        s0 = Math.max(s0prev,s2prev);</div><div class="line">        s1 = Math.max(s1prev,s0prev-p);</div><div class="line">        s2 = Math.max(s2prev,s1prev+p);</div><div class="line">        s0prev=s0;</div><div class="line">        s1prev=s1;</div><div class="line">        s2prev=s2;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Math.max(s0,s2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Best-Time-to-Buy-and-Sell-Stock-with-Transaction-Fee"><a href="#Best-Time-to-Buy-and-Sell-Stock-with-Transaction-Fee" class="headerlink" title="Best Time to Buy and Sell Stock with Transaction Fee"></a>Best Time to Buy and Sell Stock with Transaction Fee</h1><p>Your are given an array of integers <code>prices</code>, for which the <code>i</code>-th element is the price of a given stock on day <code>i</code>; and a non-negative integer <code>fee</code> representing a transaction fee.</p>
+<p>You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction. You may not buy more than 1 share of a stock at a time (ie. you must sell the stock share before you buy again.)</p>
+<p>Return the maximum profit you can make.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: prices = [1, 3, 2, 8, 4, 9], fee = 2</div><div class="line">Output: 8</div><div class="line">Explanation: The maximum profit can be achieved by:</div><div class="line">Buying at prices[0] = 1Selling at prices[3] = 8Buying at prices[4] = 4Selling at prices[5] = 9The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.</div></pre></td></tr></table></figure>
+<p>This problem is similar to the Problem II, the difference if we have more transactions, we may cost more fees which may decrease the total profit. So, when calculating the cash, we need to consider that fee. The following is the code, and I will explain it with comment:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices, <span class="keyword">int</span> fee)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> cash = <span class="number">0</span>, hold = -prices[<span class="number">0</span>], maxCash = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length;i++)&#123;</div><div class="line">        cash = Math.max(cash, hold+prices[i]-fee);</div><div class="line">        hold = Math.max(hold, cash-prices[i]);</div><div class="line">        maxCash = Math.max(cash, maxCash);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> maxCash;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Line 4 stands for the current profit we have, <code>hold+prices[i]-fee</code> means the profit we have after do a transaction. Compare this the current cash.</p>
+<p>Line 5 stands for the hold money, which means we do a buy a product.</p>
+<h1 id="Best-Time-to-Buy-and-Sell-Stock-III"><a href="#Best-Time-to-Buy-and-Sell-Stock-III" class="headerlink" title="Best Time to Buy and Sell Stock III"></a>Best Time to Buy and Sell Stock III</h1><p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete at most <em>two</em> transactions.</p>
+<p><strong>Note:</strong><br>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<p>The following code is explained with comment:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> firstBuy = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> afterFirstSell = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> afterSecondBuy = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> afterSecondSell = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> p:prices)&#123;</div><div class="line">        firstBuy = Math.max(firstBuy, -p); <span class="comment">//FirstBuy should be as lower as possible</span></div><div class="line">        afterFirstSell = Math.max(afterFirstSell, p+firstBuy); <span class="comment">//Maximize the first sell profit</span></div><div class="line">        afterSecondBuy = Math.max(afterSecondBuy,afterFirstSell-p); <span class="comment">//Let Second buy still ensure max profit</span></div><div class="line">        afterSecondSell = Math.max(afterSecondSell, p+afterSecondBuy); <span class="comment">//Maximize the second sell profit</span></div><div class="line">        &#125;</div><div class="line">    <span class="keyword">return</span> afterSecondSell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Best-Time-to-Buy-and-Sell-Stock-IV"><a href="#Best-Time-to-Buy-and-Sell-Stock-IV" class="headerlink" title="Best Time to Buy and Sell Stock IV"></a>Best Time to Buy and Sell Stock IV</h1><p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete at most <strong>k</strong> transactions.</p>
+<p><strong>Note:</strong><br>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<p>The idea is almost same as the previous one, but we need to extend it to a two dimension int array rather than store in four variables. And another thing we need to notice is if <code>k &gt;= n/2</code>, the problem will be the same as II problem, because the limit of transactions will not be a constraint for us. And the code is as follow:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n = prices.length;</div><div class="line">    <span class="keyword">if</span>(k == <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(k &gt;= n /<span class="number">2</span>)&#123;</div><div class="line">        <span class="keyword">int</span> maxPro = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (prices[i] &gt; prices[i-<span class="number">1</span>])&#123;</div><div class="line">                maxPro += prices[i] - prices[i-<span class="number">1</span>];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxPro;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[k][<span class="number">2</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)&#123;</div><div class="line">        dp[i][<span class="number">0</span>] = Integer.MIN_VALUE;</div><div class="line">        dp[i][<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> p : prices)&#123;</div><div class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = Math.max(dp[<span class="number">0</span>][<span class="number">0</span>], -p);</div><div class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = Math.max(dp[<span class="number">0</span>][<span class="number">1</span>], p+dp[<span class="number">0</span>][<span class="number">0</span>]);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++)&#123;</div><div class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>]-p);</div><div class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i][<span class="number">1</span>], dp[i][<span class="number">0</span>]+p);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dp[k-<span class="number">1</span>][<span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>All done with Best Time to Buy and Sell Stock problem. :-) Hope you can have a good understanding of Dynamic Programming in this problem. :D Any questions, please leave a comment below. :-)</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/chen.hanslen" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/Hanslen" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://www.linkedin.com/in/jiahe-chen-hanslen/" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br>
+
+                <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <!-- <span id="busuanzi_container_site_pv">Website's traffic: <span id="busuanzi_value_site_pv"></span> times</span> -->
+            
+                </p>
+                <!--
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+                -->
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-101661435-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'jiaheblog';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>

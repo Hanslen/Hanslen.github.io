@@ -208,6 +208,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch -a (shows all local and remote branches)</div><div class="line">git branch -r (shows only remote branches)</div></pre></td></tr></table></figure>
 <p>Then you can download the repository from GitHub using<br><code>git checkout branchName &amp;&amp; git pull</code><br>(Switch to the targeted branch and pull the code)</p>
 <p>This post is still updating through my programming experience. 🙂 Feel free to leave a comment and tell me which problem you are facing with Git. It will be good to configure that out together. 😀</p>
+<h1 id="How-to-ignore-folders-or-files"><a href="#How-to-ignore-folders-or-files" class="headerlink" title="How to ignore folders or files"></a>How to ignore folders or files</h1><p>I have faced a problem that when I am developing a React App, I don’t want to add the node_modules/ to my git repository. So how can I ignore it when I uploading it?</p>
+<p>Type the following:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch .gitignore</div><div class="line">vi .gitignore</div></pre></td></tr></table></figure>
+<p>Then add </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node_modules/</div></pre></td></tr></table></figure>
+<p>to the .gitignore file (type: :wq to quit and save).</p>
+<p>Then you will ignore node_modules/ automatically when you git add and git commit!</p>
 
 
                 
@@ -279,7 +286,7 @@
 
                     
                 </ul>
-                <p class="copyright text-muted">&copy; 2017 Jiahe Chen (Hanslen)<br>
+                <p class="copyright text-muted">&copy; 2018 Jiahe Chen (Hanslen)<br>
 
                 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">Website's traffic: <span id="busuanzi_value_site_pv"></span> times</span>

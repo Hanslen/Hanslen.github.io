@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="[VPN] How to set up shadowsocks account in AWS"/>
+        <meta property="og:title" content="Machine Learning summary"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>[VPN] How to set up shadowsocks account in AWS - Jiahe Chen</title>
+    <title>Machine Learning summary - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -153,18 +153,18 @@
     <!-- Page Header -->
 <!-- Set your background image for this header in your post front-matter: cover -->
 
-<header class="intro-header" style="background-image: url('cinnamon-default-header-1024x320.png')">
+<header class="intro-header" style="background-image: url('Flat-Palette-9-blogin-syes.png')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>[VPN] How to set up shadowsocks account in AWS</h1>
+                    <h1>Machine Learning summary</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2016-06-28
+                            2017-12-06
                         
                     </span>
                 </div>
@@ -185,7 +185,7 @@
                         
 
 
-<a href="/tags/programming/">#programming</a> <a href="/tags/web-programming/">#web programming</a>
+<a href="/tags/Machine-Learning/">#Machine Learning</a>
 
 
                     
@@ -200,21 +200,10 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>In this tutorial, I am going to illustrate how to set up your own Shadowsocks account. Before we start, you need a server, for me, I use the AWS. Then install Shadowsocks for that server.</p>
-<h1 id="Shadowsocks-configuration"><a href="#Shadowsocks-configuration" class="headerlink" title="Shadowsocks configuration:"></a>Shadowsocks configuration:</h1><ol>
-<li><code>sudo -s</code> //Get the root permission</li>
-<li><code>apt-get update</code> //update the apt-get</li>
-<li><code>apt-get install python-pip</code> //install python-pip</li>
-<li><code>pip install shadowsocks</code> //install shadowsocks</li>
-<li><code>vi /etc/shadowsocks.json</code> //create a file, and add the following code<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</div><div class="line">    &quot;server_port&quot;:port,</div><div class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;password&quot;:&quot;password&quot;,</div><div class="line">    &quot;timeout&quot;:300,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;fast_open&quot;:false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Don’t forget “”, that’s quite important.</p>
-<ol>
-<li><code>ssserver -c /etc/shadowsocks.json -d start</code> //start your shadowsocks</li>
-</ol>
-<h1 id="Server-configuration"><a href="#Server-configuration" class="headerlink" title="Server configuration:"></a>Server configuration:</h1><p>Then you need to go to your EC2 Management Console, go to <code>instances</code>, and find your <code>security groups</code>, then click your security groups, Click <code>Inbound</code>-&gt;<code>Edit</code>. Because my port is 8388, so my settings are like these:<br><img src="/2016/06/28/VPN-How-to-set-up-shadowsocks-account-in-AWS/vpn_aws_config.png" alt="vpn_aws_config"><br>The port for your should be your <code>/etc/shadowsocks.json.</code></p>
-<h1 id="Client-configuration"><a href="#Client-configuration" class="headerlink" title="Client configuration:"></a>Client configuration:</h1><p>Here is a link for the shadowsocks:<br>Mac: <a href="http://dl.tudouvpn.com/ShadowsocksX-2.4.1.dmg" target="_blank" rel="external">http://dl.tudouvpn.com/ShadowsocksX-2.4.1.dmg</a><br>Then you open the server settings, address should be your elastic IP, port should be the server_port, method is <code>&quot;aes-256-cfb&quot;</code>, password should be your own password. Well done. 🙂 We have finished.:-)</p>
+                <h1 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naive Bayes"></a>Naive Bayes</h1><p>The probability that event A and event B happens at the same time is: P(A∩B)=P(A)∗P(B|A)=P(B)∗P(A|B). </p>
+<p>So we will have:</p>
+<p>P(A|B)=(P(B|A)∗P(A))/P(B)</p>
+<p>P</p>
 
 
                 

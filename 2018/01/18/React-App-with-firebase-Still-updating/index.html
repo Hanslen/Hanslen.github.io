@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="React App with Firebase(Still updating)"/>
+        <meta property="og:title" content="React App with Firebase, AWS S3"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>React App with Firebase(Still updating) - Jiahe Chen</title>
+    <title>React App with Firebase, AWS S3 - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -158,7 +158,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>React App with Firebase(Still updating)</h1>
+                    <h1>React App with Firebase, AWS S3</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
@@ -277,6 +277,25 @@
 <p>remember key “public” stands for the folder you will be deploying. Generally, when we run</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
 <p>We will have a “build” folder. So we set “build” to the “public” key.</p>
+<h1 id="Deploy-to-AWS-S3"><a href="#Deploy-to-AWS-S3" class="headerlink" title="Deploy to AWS S3"></a>Deploy to AWS S3</h1><p>Firstly, you need to install aws-cli. There are multiple ways to do that, but the easiest and efficient way I find is:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install awscli</div></pre></td></tr></table></figure>
+<p>Then configure your aswcli by typing:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aws configure</div></pre></td></tr></table></figure>
+<p>You can find your access key and secret access in MySecurity credentials, then expand Access keys (access key ID and secret access key) you will get that.</p>
+<p>Then configure out aws s3:<br>Go to page: <a href="https://s3.console.aws.amazon.com/s3/home?region=us-east-1" target="_blank" rel="external">https://s3.console.aws.amazon.com/s3/home?region=us-east-1</a></p>
+<p>Then click Create Bucket, enter Bucket name -&gt; Set properties(as default) -&gt; Set permission(Set manage public permissions as Grant public read access to this bucket)-&gt;Review(Click create bucket).</p>
+<h2 id="Configure-that-bucket"><a href="#Configure-that-bucket" class="headerlink" title="Configure that bucket"></a>Configure that bucket</h2><p>Click that bucket name,</p>
+<p>then click Bucket Policy, copy the following testing to the Bukcet policy editor:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"Version"</span>: <span class="string">"2012-10-17"</span>,</div><div class="line">    <span class="attr">"Id"</span>: <span class="string">"Policy1517586076687"</span>,</div><div class="line">    <span class="attr">"Statement"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"Sid"</span>: <span class="string">"Stmt1517586072794"</span>,</div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Principal"</span>: <span class="string">"*"</span>,</div><div class="line">            <span class="attr">"Action"</span>: <span class="string">"s3:GetObject"</span>,</div><div class="line">            <span class="attr">"Resource"</span>: <span class="string">"arn:aws:s3:::testreact.com/*"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<font style="color:red">You may need to change Resource to your own…</font>
+
+<p>An easier way to do it is to use <a href="http://awspolicygen.s3.amazonaws.com/policygen.html" target="_blank" rel="external">http://awspolicygen.s3.amazonaws.com/policygen.html</a> (AWS Policy Generator)</p>
+<p>Then Save it.</p>
+<p>Go to Properties section: Click (Enable)Static website hosting -&gt; The EndPoint is your website URL. And the index document is your defualt  index page.</p>
+<h2 id="Uploading-files"><a href="#Uploading-files" class="headerlink" title="Uploading files"></a>Uploading files</h2><p>Type:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aws s3 cp build s3://testreact.com --recursive</div></pre></td></tr></table></figure>
+<p>And remeber change the <code>s3://testreact.com</code> to <code>s3://yourBucketName</code></p>
+<p>Now you can access the Endpoint to view your React App!</p>
 
 
                 

@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Jiahe Chen"/>
+        <meta property="og:title" content="[Python] Flask step by step tutorial"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>page - Jiahe Chen</title>
+    <title>[Python] Flask step by step tutorial - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -151,68 +151,99 @@
 
     <!-- Main Content -->
     <!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
-<header class="intro-header" style="background-image: url('/img/cinnamon-default-header-1024x320.png')">
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('motion-graphics-background.png')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Jiahe Chen</h1>
-                    <hr class="small">
-                    <span class="subheading">Graduate student at Columbia University in the city of New York</span>
+                <div class="post-heading">
+                    <h1>[Python] Flask step by step tutorial</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-04-03
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-                <div class="post-preview">
-    <a href="/2015/12/19/Let-your-chatRoom-can-send-one-to-one-private-message/">
-        <h2 class="post-title">
-            Let your chatRoom can send one to one private message
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2015-12-19
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2015/12/18/Hanslen-says-Hi-to-you-XD/">
-        <h2 class="post-title">
-            Hanslen says Hi to you XD
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2015-12-18
-    </p>
-</div>
-<hr>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Python/">#Python</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
 
-            <ul class="pager">
-    
-        <li class="previous"><a href="/page/4/">&larr;  Newer Posts</a></li>
-    
-    
-</ul>
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Installation-and-creating-the-environment"><a href="#Installation-and-creating-the-environment" class="headerlink" title="Installation and creating the environment"></a>Installation and creating the environment</h1><p>For Max OS users, the first thing you need to do is to install <code>virtualenv</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install virtualenv</div></pre></td></tr></table></figure>
+<p>Once we have finished installing virtualenv, we can create our own environment. For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir flaskPlayground</div><div class="line"><span class="built_in">cd</span> flaskPlayground</div><div class="line">virtualenv flaskPlayground</div></pre></td></tr></table></figure>
+<p>To active the corresponding environment, </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. /flaskPlayground/bin/active</div></pre></td></tr></table></figure>
+<p>To deactive the environment,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">deactivate</div></pre></td></tr></table></figure>
+<p>If you are not using other OS, take a look at the flask documentation. <a href="http://flask.pocoo.org/docs/0.12/installation/#installation" target="_blank" rel="external">http://flask.pocoo.org/docs/0.12/installation/#installation</a></p>
+<h2 id="pip-freeze"><a href="#pip-freeze" class="headerlink" title="pip freeze"></a>pip freeze</h2><p>requirement.txt is commonly used in Flask to list all the dependent packages. It  can be genrated by <code>pip freeze &gt; requirement.txt</code> and to install all the packages, you only need to run <code>pip install -r requirements.txt</code></p>
+<p><strong>Note: When you freeze or install the packages, make sure you are in the correct virtual environment.</strong></p>
+<h2 id="pip-install-flask-script"><a href="#pip-install-flask-script" class="headerlink" title="pip install flask-script"></a>pip install flask-script</h2><p>Flask-Script extension provides support for writing external script in Flask. This includes running a development server, a customised python shell, scripts to set up your database, cronjobs, and other command-line tasks that belong outside the web application itself.</p>
+<p>Flask-Script works in a similar way to Flask itself. You define and add commands that can be called from the command line to a Manager instance:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># manage.py</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> flask_script <span class="keyword">import</span> Manager</div><div class="line"></div><div class="line"><span class="keyword">from</span> myapp <span class="keyword">import</span> app</div><div class="line"></div><div class="line">manager = Manager(app)</div><div class="line"></div><div class="line"><span class="meta">@manager.command</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"hello"</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    manager.run()</div></pre></td></tr></table></figure>
+<p>Once you define your script commands, you can then run them on the command line:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py hello</div></pre></td></tr></table></figure>
+<p>The second argument <code>hello</code> is same as the function name.</p>
+<h1 id="Quickstart"><a href="#Quickstart" class="headerlink" title="Quickstart"></a>Quickstart</h1><p>Save the following content as “Hello.py” inside the flaskPlayground folder. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'Hello, World!'</span></div></pre></td></tr></table></figure>
+<p>Then run the following command in the terminal:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> FLASK_APP=hello.py</div><div class="line">python -m flask run</div></pre></td></tr></table></figure>
+<p>Now, we start our first flask server. :P</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
-
+</article>
 
     <!-- Footer -->
     <hr />
@@ -308,7 +339,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>

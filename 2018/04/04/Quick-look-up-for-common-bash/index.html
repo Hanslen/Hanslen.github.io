@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Quick look up for common bash (Continued..)"/>
+        <meta property="og:title" content="Quick look up for AWS(Continued..)"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Quick look up for common bash (Continued..) - Jiahe Chen</title>
+    <title>Quick look up for AWS(Continued..) - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -158,7 +158,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Quick look up for common bash (Continued..)</h1>
+                    <h1>Quick look up for AWS(Continued..)</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
@@ -221,6 +221,12 @@
 </li>
 </ol>
 <h1 id="AWS-S3"><a href="#AWS-S3" class="headerlink" title="AWS S3"></a>AWS S3</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aws s3 cp myvideo.mp4 s3://mybucket/</div></pre></td></tr></table></figure>
+<h2 id="Upload-file-to-S3"><a href="#Upload-file-to-S3" class="headerlink" title="Upload file to S3"></a>Upload file to S3</h2><p>S3 CORS configuration:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">CORSConfiguration</span> <span class="attr">xmlns</span>=<span class="string">"http://s3.amazonaws.com/doc/2006-03-01/"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">CORSRule</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">AllowedOrigin</span>&gt;</span>*<span class="tag">&lt;/<span class="name">AllowedOrigin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">AllowedMethod</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">AllowedMethod</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">AllowedMethod</span>&gt;</span>PUT<span class="tag">&lt;/<span class="name">AllowedMethod</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">AllowedMethod</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">AllowedMethod</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">AllowedMethod</span>&gt;</span>HEAD<span class="tag">&lt;/<span class="name">AllowedMethod</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">MaxAgeSeconds</span>&gt;</span>3000<span class="tag">&lt;/<span class="name">MaxAgeSeconds</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">AllowedHeader</span>&gt;</span>*<span class="tag">&lt;/<span class="name">AllowedHeader</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">CORSRule</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">CORSConfiguration</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>For React user, we can install </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save aws-sdk</div></pre></td></tr></table></figure>
+<p>Code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> albumBucketName = <span class="string">'BUCKET_NAME'</span>;</div><div class="line"><span class="keyword">var</span> bucketRegion = <span class="string">'REGION'</span>;</div><div class="line"><span class="keyword">var</span> IdentityPoolId = <span class="string">'IDENTITYPOOLID'</span>;      </div><div class="line">AWS.config.update(&#123;</div><div class="line">	<span class="attr">region</span>: bucketRegion,</div><div class="line">	<span class="attr">credentials</span>: <span class="keyword">new</span> AWS.CognitoIdentityCredentials(&#123;</div><div class="line">		<span class="attr">IdentityPoolId</span>: IdentityPoolId</div><div class="line">	&#125;)</div><div class="line">&#125;);</div><div class="line">        </div><div class="line"><span class="keyword">var</span> s3 = <span class="keyword">new</span> AWS.S3(&#123;</div><div class="line">	<span class="attr">apiVersion</span>: <span class="string">'2006-03-01'</span>,</div><div class="line">	<span class="attr">params</span>: &#123;<span class="attr">Bucket</span>: albumBucketName&#125;</div><div class="line">&#125;);</div><div class="line"><span class="keyword">let</span> files = <span class="built_in">document</span>.getElementById(<span class="string">'uploadImg'</span>).files;</div><div class="line"><span class="keyword">if</span> (!files.length) &#123;</div><div class="line">	<span class="keyword">return</span> alert(<span class="string">'Please choose a file to upload first.'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> file = files[<span class="number">0</span>];</div><div class="line"><span class="keyword">let</span> fileName = file.name;</div><div class="line"><span class="comment">// let albumPhotosKey = encodeURIComponent(albumName) + '//';</span></div><div class="line"><span class="keyword">let</span> albumPhotosKey = <span class="string">""</span>;</div><div class="line"><span class="keyword">let</span> photoKey = albumPhotosKey + fileName;</div><div class="line"><span class="keyword">let</span> params=  &#123;<span class="attr">Bucket</span>: albumBucketName, <span class="attr">Key</span>: photoKey, <span class="attr">Body</span>: file&#125;;</div><div class="line">s3.upload(params, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(err,data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 
 
                 

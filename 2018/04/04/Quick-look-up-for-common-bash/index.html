@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Jiahe Chen"/>
+        <meta property="og:title" content="Quick look up for common bash (Continued..)"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2018 - Jiahe Chen</title>
+    <title>Quick look up for common bash (Continued..) - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -150,153 +150,99 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
-<header class="intro-header" style="background-image: url('/img/cinnamon-default-header-1024x320.png')">
+<header class="intro-header" style="background-image: url('Flat-Palette-9-blogin-syes.png')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2018</h1>
+                <div class="post-heading">
+                    <h1>Quick look up for common bash (Continued..)</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-04-04
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/lookUp/">#lookUp</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2018/04/04/Quick-look-up-for-common-bash/">
-        <h1 class="post-title archive">
-            Quick look up for common bash (Continued..)
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-04-04
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2018/04/03/Python-Flask-step-by-step-tutorial/">
-        <h1 class="post-title archive">
-            [Python] Flask step by step tutorial
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-04-03
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="AWS-serverless"><a href="#AWS-serverless" class="headerlink" title="AWS serverless"></a>AWS serverless</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sls config credentials --provider aws --key yourKey --secret yourSecret_Key</div><div class="line"></div><div class="line">sls deploy --stage dev</div><div class="line"></div><div class="line">serverless deploy funciton -f botRequest</div><div class="line"></div><div class="line">serverless deploy</div></pre></td></tr></table></figure>
+<h2 id="Import-node-modules-to-Lambda"><a href="#Import-node-modules-to-Lambda" class="headerlink" title="Import node modules to Lambda"></a>Import node modules to Lambda</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aws lambda update-function-code --<span class="keyword">function</span>-name SendSMSFunc --zip-file fileb:///Users/Hanslen/Desktop/yelp-fusion/fusion/node/sendSMS.zip</div></pre></td></tr></table></figure>
+<h2 id="Connect-Lambda-Node-to-API-gateway"><a href="#Connect-Lambda-Node-to-API-gateway" class="headerlink" title="Connect Lambda Node to API gateway"></a>Connect Lambda Node to API gateway</h2><ol>
+<li><p>Make sure the returning object is in the correct format</p>
+<p>Usually in this format!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> response = &#123;</div><div class="line">        <span class="string">'body'</span>: <span class="string">"correct"</span>,</div><div class="line">        <span class="string">'statusCode'</span>: <span class="number">200</span>,</div><div class="line">        <span class="string">"headers"</span>: &#123; <span class="string">"Access-Control-Allow-Origin"</span>:<span class="string">'*'</span>&#125;</div><div class="line">        &#125;;</div><div class="line">callback(<span class="literal">null</span>, response);</div></pre></td></tr></table></figure>
+</li>
+<li><p>How to access the arguments(GET)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> msg = event[<span class="string">"queryStringParameters"</span>][<span class="string">"msg"</span>];</div></pre></td></tr></table></figure>
+<p>You can console.log the event to figure out for the POST method!</p>
+</li>
+</ol>
+<h2 id="Connect-Lambda-Python-to-API-gateway"><a href="#Connect-Lambda-Python-to-API-gateway" class="headerlink" title="Connect Lambda Python to API gateway"></a>Connect Lambda Python to API gateway</h2><ol>
+<li><p>Make sure returning in the correct format</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> dict(</div><div class="line">        statusCode=<span class="number">200</span>,</div><div class="line">        headers=&#123;</div><div class="line">            <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,</div><div class="line">            <span class="string">'Access-Control-Allow-Origin'</span>: <span class="string">'*'</span></div><div class="line">        &#125;,</div><div class="line">        body=json.dumps(&#123;<span class="string">'message'</span>: botmsg&#125;)</div><div class="line">    )</div></pre></td></tr></table></figure>
+</li>
+<li><p>How to access the arguments(POST)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">receiveData = json.loads(event[<span class="string">"body"</span>])</div><div class="line">botmsg = autoReply(receiveData[<span class="string">"message"</span>])</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="AWS-S3"><a href="#AWS-S3" class="headerlink" title="AWS S3"></a>AWS S3</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aws s3 cp myvideo.mp4 s3://mybucket/</div></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2018/03/04/Express-with-AWS-Elastic-Beanstalk/">
-        <h1 class="post-title archive">
-            Express with AWS Elastic Beanstalk
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-03-04
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2018/02/27/Let-s-talk-about-JavaScript-Asynchronous/">
-        <h1 class="post-title archive">
-            Let's talk about JavaScript Asynchronous
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-02-27
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/02/11/Let-s-talk-about-Web-front-end-security/">
-        <h1 class="post-title archive">
-            Let's talk about Web front-end security
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-02-11
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/01/31/How-to-fix-the-problem-of-Vuforia-AR-Camera-in-individual-Scene-but-not-entire-project/">
-        <h1 class="post-title archive">
-            How to fix the problem of Vuforia AR Camera in individual Scene, but not entire project?
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-31
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/01/22/Analyzing-Sina-Weibo-features/">
-        <h1 class="post-title archive">
-            Analyzing Sina Weibo features (Python)
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-22
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/01/19/How-to-install-Hadoop-on-macOS-High-Sierra/">
-        <h1 class="post-title archive">
-            How to install Hadoop on macOS High Sierra
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-19
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/01/18/React-App-with-firebase-Still-updating/">
-        <h1 class="post-title archive">
-            React App with Firebase, AWS S3
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-18
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
@@ -392,7 +338,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>

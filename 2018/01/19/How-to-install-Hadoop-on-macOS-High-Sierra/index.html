@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="How to install Hadoop on macOS High Sierra"/>
+        <meta property="og:title" content="How to install Hadoop|Spark on macOS High Sierra"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>How to install Hadoop on macOS High Sierra - Jiahe Chen</title>
+    <title>How to install Hadoop|Spark on macOS High Sierra - Jiahe Chen</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -158,7 +158,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>How to install Hadoop on macOS High Sierra</h1>
+                    <h1>How to install Hadoop|Spark on macOS High Sierra</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
@@ -200,7 +200,7 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p><font style="color:red">Note: I recommend using Hortonworks Sandbox instead now…..</font></p>
+                <p><font style="color:red">Note: I recommend using Hortonworks Sandbox instead…..</font></p>
 <h1 id="Install-Hadoop-with-brew"><a href="#Install-Hadoop-with-brew" class="headerlink" title="Install Hadoop with brew"></a>Install Hadoop with brew</h1><p>Firstly, you need to check whether home brew has been installed or not, you can try</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew -v</div></pre></td></tr></table></figure>
 <p>I will skip how to install home brew here.</p>
@@ -250,6 +250,14 @@
 <p>Thanks for these two articles which help me to figure out this problem.</p>
 <p><a href="https://isaacchanghau.github.io/2017/06/27/Hadoop-Installation-on-Mac-OS-X/" target="_blank" rel="external">https://isaacchanghau.github.io/2017/06/27/Hadoop-Installation-on-Mac-OS-X/</a></p>
 <p><a href="https://www.slideshare.net/SunilkumarMohanty3/install-apache-hadoop-on-mac-os-sierra-76275019" target="_blank" rel="external">https://www.slideshare.net/SunilkumarMohanty3/install-apache-hadoop-on-mac-os-sierra-76275019</a></p>
+<h1 id="Install-Spark"><a href="#Install-Spark" class="headerlink" title="Install Spark"></a>Install Spark</h1><p>It is much more convient to install the Spark on Mac. </p>
+<p>Firstly, download the latest Spark from <a href="http://spark.apache.org/downloads.html" target="_blank" rel="external">http://spark.apache.org/downloads.html</a></p>
+<p>Then you are done! :-) Just kidding hhhh. Move that zip to the directory that you like, as for me, I move it to the home directory. </p>
+<h2 id="Configure-Jupyter-Notebook"><a href="#Configure-Jupyter-Notebook" class="headerlink" title="Configure Jupyter Notebook"></a>Configure Jupyter Notebook</h2><p>Open you .bash_profile, and add the following to this file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#setting path for spark</span></div><div class="line"><span class="built_in">export</span> SPARK_PATH=~/spark-2.3.0-bin-hadoop2.7</div><div class="line"><span class="built_in">export</span> PYSPARK_DRIVER_PYTHON=<span class="string">"jupyter"</span></div><div class="line"><span class="built_in">export</span> PYSPARK_DRIVER_PYTHON_OPTS=<span class="string">"notebook"</span></div><div class="line"><span class="built_in">alias</span> snotebook=<span class="string">'$SPARK_PATH/bin/pyspark --master local[2]'</span></div></pre></td></tr></table></figure>
+<p>Then <code>source .bash_profile</code>. You are done! I am not kidding. :P</p>
+<p>You can now start to program with Spark in Jupyter Notebook. :-)</p>
+<p>Useful Link here: <a href="http://spark.apache.org/docs/latest/index.html" target="_blank" rel="external">http://spark.apache.org/docs/latest/index.html</a></p>
 
 
                 
